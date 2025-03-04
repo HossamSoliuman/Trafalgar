@@ -93,13 +93,14 @@ class WeeklyPropertyReportExport implements FromCollection, WithHeadings
         )->get();
 
         foreach ($data as $key => $value) {
-            if ($value->furnished == "") {
-                $value->furnished = "No";
-            }
-            if ($value->furnished == "Y") {
-                $value->furnished = "Yes";
-            }
+            $value->furnished = $value->furnished === "Y" ? "Yes" : "No";
+            $value->directions = $value->directions && $value->directions != ',' ? $value->directions : null;
+
+            $hasAddressParts = ($value->street_name || $value->street_number || $value->town) && $value->province;
+            $value->google_map = $value->directions || $hasAddressParts ? "Y" : "N";
         }
+
+
 
         return $data;
     }

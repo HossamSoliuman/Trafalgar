@@ -61,9 +61,8 @@ use App\Http\Controllers\PropertyManagementController;
 use App\Http\Controllers\CommunitySchemeManagementController;
 use App\Http\Controllers\EstateManagementController;
 use App\Http\Controllers\ManagingAgentController;
-
-
-
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/clear-all', function () {
     Artisan::call('optimize:clear');
