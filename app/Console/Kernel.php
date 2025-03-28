@@ -22,7 +22,6 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('removeExpireProperty:cron')->daily();
-        $schedule->command('backup:entegral-api-data')->hourly();
         $schedule->job(new SendPendingContactEmails)->cron('*/21 * * * *');
     }
 
