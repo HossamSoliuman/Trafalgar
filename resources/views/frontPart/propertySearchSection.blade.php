@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-12 col-lg-8">
                 <div class="heading h1_tag">
-                    <h1>Find a Property</h1>
+                    <h1 style="color:white;">Find a Property</h1>
                 </div>
                 <!--property tab section-->
                 <div class="property-section-content">
@@ -313,7 +313,7 @@
                                                 @for ($ar = 0; $ar < count($searchResultCookie); $ar++)
                                                     <span class="badge"><a
                                                             href="{{ $searchResultCookie[$ar]['link'] }}"
-                                                            style="color:#222222">{{ $searchResultCookie[$ar]['name'] }}</a></span>
+                                                            style="color:#fff">{{ $searchResultCookie[$ar]['name'] }}</a></span>
                                                 @endfor
                                             @else
                                                 <span class="badge">no recent search</span>
@@ -625,7 +625,7 @@
             @else
                 <style>
                     .contact-form {
-                        background-color: #870000;
+                        background-color: #bfd630;
                         padding: 13px;
                         border-radius: 10px;
                         width: 322px;
@@ -649,7 +649,7 @@
                     }
 
                     .contact-form button {
-                        background-color: #cccc4d;
+                        background-color: #fff;
                         /* Match the button color */
                         border: none;
                         padding: 10px;
