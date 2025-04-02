@@ -712,7 +712,7 @@ section.property_section:after {
 }
 
 .property-section-content button.button-addon2 {
-    background: var(--theme-color);
+    background: var(--theme-color_2);
     color: #fff;
     border-radius: 8px !important;
     border: 0;
@@ -817,9 +817,9 @@ div#moreAdvanceOptionSerachRent .single_select_buttons select {
 .property-solution .each-property-solution p,
 .reset-filter {
     color: white;
-    /* background-color: var(--theme-color_2); */
     font-size: var(--font-size-15);
     padding: 5px;
+    background-color: var(--theme-color);
     border-radius: 5px;
 }
 

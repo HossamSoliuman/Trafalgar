@@ -307,7 +307,9 @@
                                 <input type="hidden" id="cityrentdata" name="cityrentdata" />
                                 <div class="recent-search-view">
                                     <div class="recent-search d-flex align-items-center">
-                                        <p>Recent Search: </p>
+                                        <p
+                                            style="padding: 5px;background-color: var(--theme-color);border-radius: 5px;">
+                                            Recent Search: </p>
                                         <div class="searches">
                                             @if (!empty($searchResultCookie) && count($searchResultCookie) > 0)
                                                 @for ($ar = 0; $ar < count($searchResultCookie); $ar++)
@@ -649,11 +651,11 @@
                     }
 
                     .contact-form button {
-                        background-color: #fff;
+                        background-color: var(--theme-color_2);
                         /* Match the button color */
                         border: none;
                         padding: 10px;
-                        color: #000;
+                        color: #fff;
                         width: 100%;
                         border-radius: 5px;
                     }
