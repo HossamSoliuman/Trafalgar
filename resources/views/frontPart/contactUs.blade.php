@@ -1242,9 +1242,9 @@
                                                     <span class="icon-phone contact-icons"></span>
                                                     <p>
                                                         <span>Afterhours emergencies:</span>
-                                                        <span><a href="tel:083 399 9930">083 399 9930</a></span>
+                                                        <span><a href="tel:0647035923">064 703 5923</a></span>
                                                     </p>
-                                                </div>
+                                                </div>                                                
                                                 <div class="each_address">
                                                     <span class="icon-map contact-icons"></span>
                                                     <p>
