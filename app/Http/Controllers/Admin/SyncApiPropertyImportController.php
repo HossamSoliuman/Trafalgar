@@ -80,7 +80,6 @@ class SyncApiPropertyImportController extends Controller
     // // East London
     public function eastLondon()
     {
-
         $userName_east_london = 'Trafalgar Property Management East London';
         $password_east_london = 'a191f3a4-c618-4743-9c87-c6df426ca3f1';
         $token_east_london = 'Basic ' . base64_encode($userName_east_london . ':' . $password_east_london);
@@ -148,12 +147,12 @@ class SyncApiPropertyImportController extends Controller
         $removedProperty    = ['For Sale', 'Rental Monthly'];
 
         if (!empty($responseBody)) {
-
             EntegralApiData::where('api_city_key', $apiUserName)->where('api_type_name', 'syncApi')->delete();
             SearchReference::where('api_city_key', $apiUserName)->where('api_type_name', 'syncApi')->delete();
-
             for ($r = 0; $r < count($responseBody); $r++) {
-
+                if (!isset($responseBody[$r]['expiryDate'])) {
+                    continue;
+                }
                 $getCurrentTime = date("Y/m/d H:i:s");
                 $getCurrentTimeValue = strtotime($getCurrentTime);
                 $getDataTime = strtotime($responseBody[$r]['expiryDate']);
@@ -187,7 +186,8 @@ class SyncApiPropertyImportController extends Controller
                         if ($responseBody[$r]['propertyStatus'] == "For Sale") {
                             $insertEntegralData->mandate_saletype = 'for sale';
                         } else 
-            if ($responseBody[$r]['propertyStatus'] == "Rental Monthly") {
+            
+                        if ($responseBody[$r]['propertyStatus'] == "Rental Monthly") {
                             $insertEntegralData->mandate_saletype = "for rent";
                         } else if ($responseBody[$r]['propertyStatus'] == "Sold") {
                             $insertEntegralData->mandate_saletype = "for sale";
@@ -255,7 +255,7 @@ class SyncApiPropertyImportController extends Controller
                         if (!empty($responseBody[$r]['contact'])) {
                             $insertEntegralData->agent_id =  $responseBody[$r]['contact'][0]['clientAgentID'];
                             $insertEntegralData->agent_name = $responseBody[$r]['contact'][0]['fullName'];
-                            
+
                             $insertEntegralData->agent_email = $responseBody[$r]['contact'][0]['email'];
                             $insertEntegralData->agent_phone = $responseBody[$r]['contact'][0]['cell'];
 
