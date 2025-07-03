@@ -9,27 +9,31 @@ use App\Models\Job;
 class JobController extends Controller
 {
     
-
-    public function jobs(Request $request){
-    $setting = Setting::find(1);
-    //   $jobLocations = Job::distinct('job_location')->select('job_location')->get();
-    $jobs = Job::where('job_status',1)->
-        
-    when($request->jobtype, function ($query) use ($request) {
-        $query->where('job_type', 'like', $request->jobtype);
-    })
-        ->when($request->keyword, function ($query) use ($request) {
-            $query->where('job_title', 'like', $request->keyword);
-        })
-        ->when($request->location, function ($query) use ($request) {
-           // $query->where('job_location', '>=', $request->location);
-             $query->where('job_location',$request->location);
-        })
-       
-        ->orderBy('id','desc')->paginate(10);
-    $jobs->appends($request->all());
-      return view('frontPart.jobs.joblist', compact('setting','jobs'));
-}
+    public function jobs(Request $request)
+    {
+        $setting = Setting::find(1);
+    
+        $jobs = Job::where('job_status', 1)
+            ->when($request->jobTitle, function ($query) use ($request) {
+                $query->where('job_title', 'like', '%' . $request->jobTitle . '%');
+            })
+            ->when(!$request->jobTitle && $request->keyword, function ($query) use ($request) {
+                $query->where('job_title', 'like', '%' . $request->keyword . '%');
+            })
+            ->when($request->location, function ($query) use ($request) {
+                $query->where('job_location', $request->location);
+            })
+            ->orderBy('order', 'desc')
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+    
+        $jobs->appends($request->all());
+    
+        $all_job = Job::where('job_status',1)->orderBy('job_title','ASC')->groupBy('job_title')->get();
+    
+        return view('frontPart.jobs.joblist', compact('setting', 'jobs', 'all_job'));
+    }
+    
     
   
     
@@ -45,5 +49,11 @@ class JobController extends Controller
          }
        
         return view('frontPart.jobs.jobdetail', compact('setting','job'));
+    }
+
+    public function thankYou(Request $request)
+    {
+        $setting = Setting::find(1);
+        return view('frontPart.jobs.jobthankyou', compact('setting'));
     }
 }

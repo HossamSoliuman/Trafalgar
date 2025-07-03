@@ -2,10 +2,10 @@
 
 @section('content')
     @include('frontPart/propertySearchSection')
-     @include('frontPart/propertySolutionSection')
+    @include('frontPart/propertySolutionSection')
     
     <!-- about section  -->
-  @include('frontPart/aboutUsSection')
+    @include('frontPart/aboutUsSection')
     <!-- about section  -->
 
     <!-- latest news section  -->

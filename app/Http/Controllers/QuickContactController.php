@@ -28,7 +28,8 @@ class QuickContactController extends Controller
         $request->validate([
             'g-recaptcha-response' => ['required', new ReCaptcha]
         ]);
-        Mail::to('webmaster@trafalgar.co.za')->send(new QuickContact($request->all()));
+        // webmaster@trafalgar.co.za
+        Mail::to('queries@trafalgar.co.za')->send(new QuickContact($request->all()));
         if (Mail::failures()) {
             return Redirect::back()->with('error', 'Something went wrong!');
         } else {
@@ -43,10 +44,20 @@ class QuickContactController extends Controller
 
     public function contactUs(Request $request)
     {
+        if($request->website != null)
+        {
+            return Redirect::back()->with('error', 'Something went wrong!');
+        }
        
         if (!$request->has('formMain')) {
         $request->validate([
-            'g-recaptcha-response' => ['required', new ReCaptcha]
+            'g-recaptcha-response' => ['required', new ReCaptcha],
+            'name' => 'required',
+            'city' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'time_to_call' => 'required',
+            'branches_email' => 'required',
         ]);
             $request->merge(['formMain' => 'not home']);
         }
@@ -61,6 +72,8 @@ class QuickContactController extends Controller
         $contactus->comment_or_question = $request->comment_or_question;
         $contactus->branches_email = $request->branches_email ?? 'info@trafalgar.co.za';
         $contactus->save();
+        
+        Mail::to('info@trafalgar.co.za')->send(new ContactUsMailByBranch($request->all()));
 
         return Redirect::back()->with('success', 'Email sent successfully')->with('formName', 'trafalgar_contactus');
     }
@@ -70,8 +83,8 @@ class QuickContactController extends Controller
         $request->validate([
             'g-recaptcha-response' => ['required', new ReCaptcha]
         ]);
-
-        Mail::to(['blydep@trafalgar.co.za', 'christiaanj@trafalgar.co.za'])->send(new InsureContactMail($request->all()));
+        // 'blydep@trafalgar.co.za', 'christiaanj@trafalgar.co.za'
+        Mail::to(['queries@trafalgar.co.za'])->send(new InsureContactMail($request->all()));
 
         if (Mail::failures()) {
             return Redirect::back()->with('error', 'Something went wrong!');
@@ -85,8 +98,8 @@ class QuickContactController extends Controller
         $request->validate([
             'g-recaptcha-response' => ['required', new ReCaptcha]
         ]);
-
-        Mail::to(['blydep@trafalgar.co.za', 'christiaanj@trafalgar.co.za'])->send(new FinanceContactMail($request->all()));
+        // 'blydep@trafalgar.co.za', 'christiaanj@trafalgar.co.za'
+        Mail::to(['queries@trafalgar.co.za'])->send(new FinanceContactMail($request->all()));
 
 
         if (Mail::failures()) {
@@ -98,21 +111,31 @@ class QuickContactController extends Controller
 
     public function sellContactMail(Request $request)
     {
-
+        if($request->website != null)
+        {
+            return Redirect::back()->with('error', 'Something went wrong!');
+        }
+        $request->validate([
+            'g-recaptcha-response' => ['required', new ReCaptcha],
+            'name' => 'required',
+            'city' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'method_of_contact' => 'required',
+            'property_address' => 'required'
+        ]);
         $sellContactMailModel = new SellContactMailModel;
         $sellContactMailModel->name = $request->name;
         $sellContactMailModel->city = $request->city;
         $sellContactMailModel->email = $request->email;
-        $sellContactMailModel->contact_number =  $request->contact_number;
+        $sellContactMailModel->contact_number =  $request->phone;
         $sellContactMailModel->method_of_contact =  $request->method_of_contact;
         $sellContactMailModel->time_to_call = $request->time_to_call;
         $sellContactMailModel->comment_or_question = $request->comment_or_question;
         $sellContactMailModel->property_address = $request->property_address;
         $sellContactMailModel->save();
-        $request->validate([
-            'g-recaptcha-response' => ['required', new ReCaptcha]
-        ]);
-        Mail::to(['webmaster@trafalgar.co.za'])->send(new SellContactMail($request->all()));
+        // 'webmaster@trafalgar.co.za'
+        Mail::to(['queries@trafalgar.co.za'])->send(new SellContactMail($request->all()));
 
         if (Mail::failures()) {
             return Redirect::back()->with('error', 'Something went wrong!');

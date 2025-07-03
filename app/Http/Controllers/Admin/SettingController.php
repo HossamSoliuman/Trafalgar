@@ -9,10 +9,6 @@ use App\Models\Setting;
 
 class SettingController extends Controller
 {
-    
-    
-    
-    
   public function index(){
       $setting = Setting::find(1);
       return view('admin.pages.setting',compact('setting'));
@@ -87,5 +83,11 @@ class SettingController extends Controller
        
             
         return redirect('/admin/setting')->with('success', 'Setting save successfully');
+  }
+  
+  public function sitemap(){
+      
+      $setting = Setting::find(1);
+      return view('admin.pages.sitemap',compact('setting'));
   }
 }

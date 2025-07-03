@@ -52,7 +52,7 @@
                                                                                             <td style="padding-left: 15px;font-size: 15px;">{{ $details['branches_email'] }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;">Name</th>
+                                                                                            <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;">FullName</th>
                                                                                             <td style="padding-left: 15px;font-size: 15px;">{{ ucfirst($details['name']) }}</td>
                                                                                         </tr>
                                                                                         <tr>
@@ -60,7 +60,7 @@
                                                                                             <td style="padding-left: 15px;font-size: 15px;">{{ $details['email'] }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;">Phone</th>
+                                                                                            <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;">Mobile Number</th>
                                                                                             <td style="padding-left: 15px;font-size: 15px;">{{  $details['phone'] }}</td>
                                                                                         </tr>
                                                                                         <tr>
@@ -72,7 +72,7 @@
                                                                                             <td style="word-break: break-all;padding-left: 15px;font-size: 15px;">{{  $details['method_of_contact'] }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;vertical-align: baseline;">Time To Call</th>
+                                                                                            <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;vertical-align: baseline;">Time To Contact</th>
                                                                                             <td style="word-break: break-all;padding-left: 15px;font-size: 15px;">{{  $details['time_to_call'] }}</td>
                                                                                         </tr>
                                                                                         <tr>

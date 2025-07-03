@@ -73,12 +73,12 @@
         <div class="apply_online_form">
             <h4>Apply Online</h4>
             <form action="{{ route('apply-for-job') }}" method="post"  enctype="multipart/form-data" id="apply-for-individual-job" >
-              
+              @csrf
                 <div class="field_row">
                     <div class="form-group">
                         <label for="title">Title<span>*</span></label>
                         <div class="icon_select1">
-                            <select id="title" name="title" class="form-control">
+                            <select id="title" name="title" class="form-control" required>
                               <option  value="Mr.">Mr. </option>
                               <option  value="Ms."> Ms. </option>
                               <option  value="Mrs."> Mrs. </option>
@@ -94,7 +94,7 @@
                     
                     <div class="form-group">
                         <label for="first_name">First Name<span>*</span></label>
-                        <input type="text" value="{{ old('first_name') }}" name="first_name" class="form-control" id="first_name">
+                        <input type="text" value="{{ old('first_name') }}" name="first_name" class="form-control" id="first_name" required>
                           @error('first_name')
                       <span  style="color:red;"  > {{ $message }}<span>
                     @enderror
@@ -102,7 +102,7 @@
                     
                     <div class="form-group">
                         <label   for="sur_name">Surname<span>*</span></label>
-                        <input type="text" value="{{ old('sur_name') }}" name="sur_name" class="form-control" id="sur_name">
+                        <input type="text" value="{{ old('sur_name') }}" name="sur_name" class="form-control" id="sur_name" required>
                           @error('sur_name')
                       <span  style="color:red;"  > {{ $message }}<span>
                     @enderror
@@ -114,22 +114,32 @@
                 <div class="field_row">
                     <div class="form-group">
                         <label for="sa_resident">South African Resident<span>*</span></label>
-                        <input type="text" value="{{ old('sa_resident') }}" name="sa_resident" class="form-control" id="sa_resident">
-                          @error('sa_resident')
-                      <span  style="color:red;"  > {{ $message }}<span>
-                    @enderror
+                        <div class="radio-group">
+                          <span>
+                            <input type="radio" id="Yes" value="Yes" name="sa_resident" checked>
+                            <label for="Yes" >Yes</label>
+                          </span>
+                          <span>
+                            <input type="radio" id="No" value="No" name="sa_resident">
+                            <label for="No">No</label>
+                          </span>
+                        </div>
+                        {{-- <input type="text" value="{{ old('sa_resident') }}" name="sa_resident" class="form-control" id="sa_resident" required> @error('sa_resident') --}}
+                      @error('sa_resident')
+                        <span  style="color:red;"  > {{ $message }}<span>
+                      @enderror
                     </div>
                     <div class="form-group">
-                        <label for="nid_number">National ID Number<span>*</span></label>
-                        <input type="text" value="{{ old('nid_number') }}" name="nid_number" class="form-control" id="nid_number">
-                          @error('nid_number')
-                      <span  style="color:red;"  > {{ $message }}<span>
-                    @enderror
+                        <label for="nid_number">National ID, Permit, Passport or Visa Number<span>*</span></label>
+                        <input type="text" value="{{ old('nid_number') }}" name="nid_number" class="form-control" id="nid_number" required>
+                        @error('nid_number')
+                          <span  style="color:red;"  > {{ $message }}<span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="home_language">Home Language<span>*</span></label>
                         <div class="icon_select1">
-                            <select id="home_language" name="home_language" class="form-control">
+                            <select id="home_language" name="home_language" class="form-control" required>
                                <option value="English">English </option>
                                   <option value=" Afrikaans"> Afrikaans </option>
                                   <option value="IsiXhosa"> IsiXhosa </option>
@@ -144,9 +154,9 @@
                                   <option value=" Other"> Other </option>
                             </select>
                         </div>
-                          @error('home_language')
-                      <span  style="color:red;"  > {{ $message }}<span>
-                    @enderror
+                        @error('home_language')
+                          <span  style="color:red;"  > {{ $message }}<span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>Gender<span>*</span></label>
@@ -161,44 +171,39 @@
                           </span>
                         </div>
                           @error('gender')
-                      <span  style="color:red;"  > {{ $message }}<span>
-                    @enderror
+                            <span  style="color:red;"  > {{ $message }}<span>
+                          @enderror
                     </div>
-                </div>
                 
-                <div class="field_row">
+                
+                {{-- <div class="field_row"> --}}
                     <div class="form-group">
-                        <label for="address">Address<span>*</span></label>
-                        <textarea  id="address" name="address" class="form-control" rows="3">{{ old('address') }}</textarea>
+                        <label for="address">Residential Address<span>*</span></label>
+                        <textarea  id="address" name="address" class="form-control" rows="3" required>{{ old('address') }}</textarea>
                          @error('address')
                       <span  style="color:red;"  > {{ $message }}<span>
                     @enderror
                     </div>
-                </div>
+                {{-- </div> --}}
                 
-                <div class="field_row">
-                    <div class="form-group">
-                        <label for="country">Country<span>*</span></label>
-                        <input type="text" class="form-control" value="{{ old('country') }}" name="country" id="country">
-                          @error('country')
-                      <span  style="color:red;"  > {{ $message }}<span>
-                    @enderror
-                    </div>
+                {{-- <div class="field_row"> --}}
+                    
                     <div class="form-group">
                         <label for="city">City<span>*</span></label>
-                        <input type="text"  value="{{ old('city') }}" class="form-control" name="city" id="city">
+                        <input type="text"  value="{{ old('city') }}" class="form-control" name="city" id="city" required>
                          @error('city')
                       <span  style="color:red;"  > {{ $message }}<span>
                     @enderror
                     </div>
+                    
                     <div class="form-group">
                       <label for="postal_code">Postal Code<span>*</span></label>
-                        <input type="text"  value="{{ old('postal_code') }}" class="form-control" name="postal_code" id="postal_code">
+                        <input type="text"  value="{{ old('postal_code') }}" class="form-control" name="postal_code" id="postal_code" required>
                          @error('postal_code')
                       <span  style="color:red;"  > {{ $message }}<span>
                     @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Address Type<span>*</span></label>
                         <div class="radio-group">
                           <span>
@@ -217,81 +222,101 @@
                           @error('address_type')
                       <span  style="color:red;"  > {{ $message }}<span>
                     @enderror
+                    </div> --}}
+                {{-- </div> --}}
+                {{-- <div class="field_row"> --}}
+                <div class="form-group">
+                    <label>Province<span>*</span></label>
+                    <div class="icon_select1">
+                        <select id="province" name="province" class="form-control" required>
+                          <option value="eastern Cape" selected>Eastern Cape</option>
+                          <option value="free State">Free State</option>
+                          <option value="gauteng">Gauteng</option>
+                          <option value="kwazulu natal">Kwazulu Natal</option>
+                          <option value="mpumalanga">Mpumalanga</option>
+                          <option value="nm province">NW Province</option>
+                          <option value="northern cape">Northern Cape</option>
+                          <option value="northern province">Northern Province</option>
+                          <option value="western cape">Western Cape</option>
+                          <option value="other">Other</option>
+                        </select>
                     </div>
+                    {{-- <div class="radio-group">
+                      <span>
+                        <input type="radio" value="eastern Cape" id="eastern_cape" name="province" checked>
+                        <label for="eastern_cape">Eastern Cape</label>
+                      </span>
+                      <span>
+                        <input type="radio" value="free State" id="free_state" name="province">
+                        <label for="free_state">Free State</label>
+                      </span>
+                      <span>
+                        <input type="radio" value="gauteng" id="gauteng"  name="province">
+                        <label for="gauteng">Gauteng</label>
+                      </span>
+                      <span>
+                        <input type="radio" value="kwazulu natal" id="kwazulu_natal"  name="province">
+                        <label for="kwazulu_natal">Kwazulu Natal</label>
+                      </span>
+                      <span>
+                        <input type="radio" value="mpumalanga" id="mpumalanga"  name="province">
+                        <label for="mpumalanga">Mpumalanga</label>
+                      </span>
+                      <span>
+                        <input type="radio" id="nm_province" value="nm province"  name="province">
+                        <label for="nm_province">NW Province</label>
+                      </span>
+                      <span>
+                        <input type="radio" value="northern cape" id="northern_cape"  name="province">
+                        <label for="northern_cape">Northern Cape</label>
+                      </span>
+                      <span>
+                        <input type="radio" value="northern province" id="northern_province"  name="province">
+                        <label for="northern_province">Northern Province</label>
+                      </span>
+                      <span>
+                        <input type="radio" value="western cape" id="western_cape"  name="province">
+                        <label for="western_cape">Western Cape</label>
+                      </span>
+                      <span>
+                        <input type="radio" id="other" value="other"  name="province">
+                        <label for="other">Other</label>
+                      </span>
+                    </div> --}}
+                  @error('province')
+                    <span  style="color:red;"  > {{ $message }}<span>
+                  @enderror
                 </div>
+              {{-- </div> --}}
                 
-                <div class="field_row">
-                    <div class="form-group">
-                        <label>Province<span>*</span></label>
-                        <div class="radio-group">
-                          <span>
-                            <input type="radio" value="eastern Cape" id="eastern_cape" name="province" checked>
-                            <label for="eastern_cape">Eastern Cape</label>
-                          </span>
-                          <span>
-                            <input type="radio" value="free State" id="free_state" name="province">
-                            <label for="free_state">Free State</label>
-                          </span>
-                          <span>
-                            <input type="radio" value="gauteng" id="gauteng"  name="province">
-                            <label for="gauteng">Gauteng</label>
-                          </span>
-                          <span>
-                            <input type="radio" value="kwazulu natal" id="kwazulu_natal"  name="province">
-                            <label for="kwazulu_natal">Kwazulu Natal</label>
-                          </span>
-                          <span>
-                            <input type="radio" value="mpumalanga" id="mpumalanga"  name="province">
-                            <label for="mpumalanga">Mpumalanga</label>
-                          </span>
-                          <span>
-                            <input type="radio" id="nm_province" value="nm province"  name="province">
-                            <label for="nm_province">NW Province</label>
-                          </span>
-                          <span>
-                            <input type="radio" value="northern cape" id="northern_cape"  name="province">
-                            <label for="northern_cape">Northern Cape</label>
-                          </span>
-                          <span>
-                            <input type="radio" value="northern province" id="northern_province"  name="province">
-                            <label for="northern_province">Northern Province</label>
-                          </span>
-                          <span>
-                            <input type="radio" value="western cape" id="western_cape"  name="province">
-                            <label for="western_cape">Western Cape</label>
-                          </span>
-                          <span>
-                            <input type="radio" id="other" value="other"  name="province">
-                            <label for="other">Other</label>
-                          </span>
-                        </div>
-                         @error('province')
+                <div class="form-group">
+                    <label for="country">Country<span>*</span></label>
+                    <input type="text" class="form-control" value="{{ old('country') }}" name="country" id="country" required>
+                    @error('country')
                       <span  style="color:red;"  > {{ $message }}<span>
                     @enderror
-                    </div>
                 </div>
-                
-                <div class="field_row">
-                    <div class="form-group">
-                        <label for="tel_number_home">Telephone Number (Home)<span>*</span></label>
+                <div class="field_row d-flex">
+                    <div class="form-group w-50">
+                        <label for="tel_number_home">Telephone Number (Home)</label>
                         <input type="number" class="form-control" name="tel_number_home" value="{{ old('tel_number_home') }}" id="tel_number_home" />
                            @error('tel_number_home')
                       <span  style="color:red;"  > {{ $message }}<span>
                     @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="tel_number_work">Telephone Number (Work)<span>*</span></label>
-                        <input type="number" value="{{ old('tel_number_work') }}" class="form-control" name="tel_number_work" id="tel_number_work">
+                    <div class="form-group w-50">
+                        <label for="tel_number_work">Telephone Number (Work)</label>
+                        <input type="number" value="{{ old('tel_number_work') }}" class="form-control" name="tel_number_work" id="tel_number_work" >
                          @error('tel_number_work')
                       <span  style="color:red;"  > {{ $message }}<span>
                     @enderror
                     </div>
                 </div>
                 
-                <div class="field_row">
+                {{-- <div class="field_row"> --}}
                     <div class="form-group">
                         <label for="cell_number">Cell Number<span>*</span></label>
-                        <input type="number" value="{{ old('cell_number') }}" name="cell_number" class="form-control" id="cell_number">
+                        <input type="number" value="{{ old('cell_number') }}" name="cell_number" class="form-control" id="cell_number" required >
                           @error('cell_number')
                       <span  style="color:red;"  > {{ $message }}<span>
                     @enderror
@@ -299,42 +324,87 @@
                    
                     <div class="form-group">
                         <label for="email_address">Email Address<span>*</span></label>
-                        <input type="email"  value="{{ old('email_address') }}" class="form-control" id="email_address" name="email_address">
+                        <input type="email"  value="{{ old('email_address') }}" class="form-control" id="email_address" name="email_address" required>
                          @error('email_address')
                       <span  style="color:red;"  > {{ $message }}<span>
                     @enderror
                     </div>
-                </div>
+                {{-- </div> --}}
                 
-                <div class="field_row">
+                {{-- <div class="field_row"> --}}
                     <div class="form-group">
-                        <label for="annual_package">Annual Package (Cost to Company)<span>*</span></label>
-                        <input type="text" value="{{ old('annual_package') }}"  class="form-control" name="annual_package" id="annual_package">
-                        @error('annual_package')
-                      <span  style="color:red;"  > {{ $message }}<span>
-                    @enderror
+                        <label for="annual_package">Current Annual Salary<span>*</span></label>
+                        <input type="text" value="{{ old('annual_package') }}"  class="form-control" name="annual_package" id="annual_package" required>
+                      @error('annual_package')
+                        <span  style="color:red;"  > {{ $message }}<span>
+                      @enderror
                     </div>
+                {{-- </div> --}}
+
+                <div class="form-group">
+                    <label for="salary_expectation">Salary Expectation<span>*</span></label>
+                    <input type="number" value="{{ old('salary_expectation') }}"  class="form-control" name="salary_expectation" id="salary_expectation" required>
+                  @error('salary_expectation')
+                    <span  style="color:red;"  > {{ $message }}<span>
+                  @enderror
                 </div>
+
+                <div class="form-group">
+                  <label for="notice_period">Notice period<span>*</span></label>
+                  <input type="text" value="{{ old('notice_period') }}"  class="form-control" name="notice_period" id="notice_period" required>
+                @error('notice_period')
+                  <span  style="color:red;"  > {{ $message }}<span>
+                @enderror
+              </div>
                 
-                <div class="field_row">
-                    <div class="form-group">
+                {{-- <div class="field_row"> --}}
+                <div class="form-group">
                         <label for="upload_cv">Upload CV<span>*</span></label>
-                        <input multiple type="file" class="form-control" name="upload_cv[]" id="upload_cv"
-                        accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf"
-                         >
-                          @error('upload_cv')
+                        <input type="file" class="form-control" name="upload_cv[]" id="upload_cv" required accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf" >
+                        @error('upload_cv')
+                          <span  style="color:red;"  > {{ $message }}<span>
+                        @enderror
+                </div>
+                {{-- </div> --}}
+              
+                <div class="form-group">
+                    <label for="upload_id">Upload ID<span>*</span></label>
+                    <input type="file" class="form-control" name="upload_id" id="upload_id" required accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                    @error('upload_id')
                       <span  style="color:red;"  > {{ $message }}<span>
                     @enderror
-                    </div>
-                    
                 </div>
-                <button type="submit" class="form-control" id="submitButton" onclick="this.disabled=true;this.value='Sending, please wait...';this.form.submit();">Send message</button>
+
+                <div class="form-group">
+                    <label for="upload_qualifications">Upload Qualifications<span>*</span></label>
+                    <input multiple type="file" class="form-control" name="upload_qualifications[]" id="upload_qualifications" required accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf" >
+                    @error('upload_qualifications')
+                      <span style="color:red;"  > {{ $message }}<span>
+                    @enderror
+                </div>
+
+              </div>                            
+                <!--<button type="submit" class="form-control" id="submitButton" onclick="this.disabled=true;this.value='Sending, please wait...';this.form.submit();">Send message</button>-->              
+                <button type="submit" class="form-control" id="submitButton" >Submit Application</button>
                 <input type="hidden"  value="{{ (isset($job->id))? $job->id :"" }}" name="job_id">
-                  @csrf
             </form>
         </div>
     </div>
 </section>
+
+
+<script>
+document.getElementById("apply-for-individual-job").addEventListener("submit", function(event) {
+    let submitButton = document.getElementById("submitButton");
+    if (!this.checkValidity()) {
+        event.preventDefault();
+        return;
+    }
+    submitButton.disabled = true;
+    submitButton.innerText = "Sending, please wait...";
+});
+</script>
+
 <div class="next-previous_view text-center">
   
     @php   $checkPreviousJob = \App\Models\Job::where('job_status',1)->where('id', '<',$job->id)->take(1)->first();  @endphp

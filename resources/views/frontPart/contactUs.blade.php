@@ -403,8 +403,7 @@
                                                     <span class="icon-home contact-icons"></span>
                                                     <p>
                                                         <span>Physical Address:</span>
-                                                        <span>Shop 11, The New Colonnade Devereux Avenue Vincent
-                                                            5247</span>
+                                                        <span>9 Vincent Road, Vincent,<br/> East London 5247</span>
                                                     </p>
                                                 </div>
                                                 <div class="each_address">
@@ -442,10 +441,8 @@
                                                 </div>
                                             </div>
                                             <div id="address_map">
-                                                <iframe
-                                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3346.7174537798032!2d27.902240515187316!3d-32.98485548090973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e66e039cb2f539d%3A0xe1dc033066544545!2s37%20Devereux%20Ave%2C%20Berea%2C%20East%20London%2C%205241%2C%20South%20Africa!5e0!3m2!1sen!2sin!4v1647925194946!5m2!1sen!2sin"
-                                                    width="600" height="450" style="border:0;" allowfullscreen=""
-                                                    loading="lazy"></iframe>
+                                                <iframe width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                                src="https://maps.google.com/maps?width=100%25&amp;height=450&amp;hl=en&amp;q=9%20Vincent%20Road,%20Vincent,%20East%20London%205247+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                                             </div>
                                         </div>
                                     </div>
@@ -464,8 +461,7 @@
                                                     <span class="icon-home contact-icons"></span>
                                                     <p>
                                                         <span>Physical Address:</span>
-                                                        <span>Shop 3 The Schwedhelm Building <br /> 35 Main Road Gonubie
-                                                            5257</span>
+                                                        <span>9 Vincent Road, Vincent,<br/> East London 5247</span>
                                                     </p>
                                                 </div>
                                                 <div class="each_address">
@@ -503,10 +499,8 @@
                                                 </div>
                                             </div>
                                             <div id="address_map">
-                                                <iframe
-                                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13393.921059049802!2d28.0108628!3d-32.9383274!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e671f51c53ea473%3A0x72c22daceb47aa24!2s35%20Main%20Rd%2C%20Gonubie%20North%2C%20Gonubie%2C%205257%2C%20South%20Africa!5e0!3m2!1sen!2sin!4v1647925215742!5m2!1sen!2sin"
-                                                    width="600" height="450" style="border:0;" allowfullscreen=""
-                                                    loading="lazy"></iframe>
+                                                <iframe width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                                src="https://maps.google.com/maps?width=100%25&amp;height=450&amp;hl=en&amp;q=9%20Vincent%20Road,%20Vincent,%20East%20London%205247+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                                             </div>
                                         </div>
                                     </div>
@@ -516,7 +510,6 @@
                             <div class="tab__content-item tab">
                                 <div class="tab__list">
                                     <div class="tab__item">Regional Head Office</div>
-                                    <div class="tab__item">Inner City</div>
                                 </div>
 
                                 <div class="tab__content">
@@ -580,66 +573,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab__content-item">
-                                        <div class="addresses_head innercity">
-                                            <div class="addresses">
-                                                <div class="each_address">
-                                                    <span class="icon-envelope contact-icons"></span>
-                                                    <p>
-                                                        <span>Email Address:</span>
-                                                        <span><a
-                                                                href="mailto:allysonk@trafalgar.co.za">allysonk@trafalgar.co.za</a></span>
-                                                    </p>
-                                                </div>
-                                                <div class="each_address">
-                                                    <span class="icon-home contact-icons"></span>
-                                                    <p>
-                                                        <span>Physical Address:</span>
-                                                        <span>30 Joel Road Berea <br /> Johannesburg 2198</span>
-                                                    </p>
-                                                </div>
-                                                <div class="each_address">
-                                                    <span class="icon-home contact-icons"></span>
-                                                    <p>
-                                                        <span>Postal Address:</span>
-                                                        <span>P.O. Box 17227 Hillbrow 2038</span>
-                                                    </p>
-                                                </div>
-                                                <div class="each_address">
-                                                    <span class="icon-phone contact-icons"></span>
-                                                    <p>
-                                                        <span>Tel:</span>
-                                                        <span><a href="tel:011 544 3900">011 544 3900</a></span>
-                                                    </p>
-                                                </div>
-                                                <div class="each_address">
-                                                    <span class="icon-phone contact-icons"></span>
-                                                    <p>
-                                                        <span>Afterhours emergencies:</span>
-                                                        <span><a href="tel:071 881 1784">071 881 1784</a></span>
-                                                    </p>
-                                                </div>
-                                                <div class="each_address">
-                                                    <span class="icon-map contact-icons"></span>
-                                                    <p>
-                                                        <span>Latitude:</span>
-                                                        <span>26.187360 S</span>
-                                                    </p>
-                                                    <br />
-                                                    <p>
-                                                        <span>Longitude:</span>
-                                                        <span>28.053150 E</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div id="address_map">
-                                                <iframe
-                                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.286404848228!2d28.050961315029564!3d-26.187359983445372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c256651b301%3A0xa44730fb077b78b8!2s30%20Joel%20Rd%2C%20Berea%2C%20Johannesburg%2C%202198%2C%20South%20Africa!5e0!3m2!1sen!2sin!4v1647925255529!5m2!1sen!2sin"
-                                                    width="600" height="450" style="border:0;" allowfullscreen=""
-                                                    loading="lazy"></iframe>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
 
                             </div>
@@ -1344,7 +1278,12 @@
         <div class="maintenance_form_view" id="maintenance_form_view_div">
             <div class="management_form">
                 <h2>Contact Us</h2>
-
+                <style>
+                    .text-error{
+                       color:red;
+                       font-size:14px;
+                    }
+                </style>
                 <form action="{{ route('contactus') }}" method="post" id="trafalgar_contactus">
 
                     @csrf
@@ -1353,16 +1292,25 @@
                             <div class="form-group">
                                 <label for="name">Name<span>*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" required>
+                                @error('name')
+                                    <span class="text-error">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="field_row">
                             <div class="form-group">
                                 <label for="email">Email:<span>*</span></label>
                                 <input type="email" class="form-control" id="email" name="email" required>
+                                @error('email')
+                                    <span class="text-error">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="phone">Phone:<span>*</span></label>
                                 <input type="number" class="form-control" id="phone" name="phone" required>
+                                @error('phone')
+                                    <span class="text-error">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="field_row">
@@ -1384,12 +1332,18 @@
                                     <option value="pta@trafalgar.co.za">Pretoria</option>
                                     <option value="tfs@trafalgar.co.za">Trafalgar Financial Services</option>
                                 </select>
+                                @error('branches_email')
+                                    <span class="text-error">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="field_row">
                             <div class="form-group">
                                 <label for="city">City:<span>*</span></label>
                                 <input type="text" class="form-control" id="city" name="city" required>
+                                @error('city')
+                                    <span class="text-error">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Preferred method of contact</label>
@@ -1409,7 +1363,10 @@
                             <div class="form-group">
                                 <label for="time_to_call">Preferred time to be called<span>*</span></label>
                                 <input type="text" class="form-control" id="time_to_call" name="time_to_call"
-                                    required>
+                                   required >
+                                @error('time_to_call')
+                                    <span class="text-error">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="field_row">
@@ -1418,6 +1375,10 @@
                                 <textarea required type="text" class="form-control" id="comment_or_question" rows="3"
                                     name="comment_or_question"></textarea>
                             </div>
+                        </div>
+                        <div style="display:none;">
+                          <label for="website">Website</label>
+                          <input type="text" id="website" name="website" autocomplete="off">
                         </div>
 
                         <div class="form-group">

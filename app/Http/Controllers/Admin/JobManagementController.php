@@ -23,8 +23,27 @@ class JobManagementController extends Controller
       
       
     }
+    public function order(Request $request)
+    {
+      $jobs = Job::orderBy('order','desc')->orderBy('id', 'desc')->where('job_status', 1)->get();  
+      return view('admin.pages.jobs.jobOrder',compact('jobs'));
+    }
+    public function updateOrder(Request $request)
+    {
+      $selectedIds = $request->input('order', []);
 
-    
+      // Reset all job orders to 0
+      Job::where('order', '>', 0)->update(['order' => 0]);
+
+      // Apply new bump order only if jobs are selected
+      if (!empty($selectedIds)) {
+          foreach ($selectedIds as $index => $jobId) {
+              Job::where('id', $jobId)->update(['order' => $index + 1]);
+          }
+      }
+
+      return back()->with('success', 'Selected jobs bumped to top!');     
+    }
     public function create()
     {
         

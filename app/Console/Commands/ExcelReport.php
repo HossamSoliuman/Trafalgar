@@ -2,22 +2,17 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Excel;
-use App\Exports\WeeklyPropertyReportExport;
-use Mail;
-use App\Mail\WeeklyExcelPropertyReport;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 
-class WeekPropertyEmailReport extends Command
+class ExcelReport extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'send:weekly-report';
+    protected $signature = 'report:send';
 
     /**
      * The console command description.
@@ -43,7 +38,9 @@ class WeekPropertyEmailReport extends Command
      */
     public function handle()
     {
-           app(\App\Http\Controllers\Admin\WeeklyPropertyReportController::class)->export();
-
+        $this->info('start');
+        Mail::raw('This is a simple email without mailable.', function ($message) {
+            $message->to('hossamsoliuman@gmail.com')->subject('Simple Email');
+        });
     }
 }

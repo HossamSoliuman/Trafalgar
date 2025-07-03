@@ -212,7 +212,7 @@
             </ul>
           </li>
           
-          <li  class="nav-item {{ ((Request::is('admin/job-management/*') || Request::is('admin/job-management')) || (Request::is('admin/job-applications/*') || Request::is('admin/job-applications')) )? 'menu-is-opening menu-open' : '' }} ">
+          <li  class="nav-item {{ ((Request::is('admin/job-management/*') || Request::is('admin/job-management')) || (Request::is('admin/job-order')) || (Request::is('admin/job-applications/*') || Request::is('admin/job-applications')) )? 'menu-is-opening menu-open' : '' }} ">
             <a href="#" class="nav-link {{ (Request::is('admin/job-management/*') || Request::is('admin/job-management'))? 'active' : '' }}">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -240,6 +240,12 @@
                   <p>Job Applications</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.job.order')}}" class="nav-link  {{ (Request::is('admin/job-order'))? 'active' : '' }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Order Job list</p>
+                </a>
+              </li>
              
             </ul>
           </li>
@@ -261,7 +267,14 @@
              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Settings
-                <!--<span class="right badge badge-danger">New</span>-->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.sitemap')}}" class="nav-link  {{ (Request::is('admin/sitemap')? 'active' : '') }}">
+             <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+               Sitemap
               </p>
             </a>
           </li>

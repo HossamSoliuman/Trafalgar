@@ -106,27 +106,44 @@
                             <small>Please complete the form below to contact us</small>
                            <form method="post" action="{{ route('sell-contact-mail') }}" >
                                @csrf
+                                <div style="display:none;">
+                                  <label for="website">Website</label>
+                                  <input type="text" id="website" name="website" autocomplete="off">
+                                </div>
+
                                 <div class="maintenance_form_inner">
                                     <div class="field_row">
                                         <div class="form-group">
                                             <label for="name">Name<span>*</span></label>
                                             <input type="text" class="form-control" id="name" name="name" required>
+                                            @error('name')
+                                                <span class="text-error">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="field_row">
                                         <div class="form-group">
                                             <label for="email">Email:<span>*</span></label>
                                             <input type="email" class="form-control" id="email" name="email" required >
+                                            @error('email')
+                                                <span class="text-error">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="phone">Phone Number:<span>*</span></label>
                                             <input type="text" class="form-control" id="phone" name="phone" required>
+                                            @error('phone')
+                                                <span class="text-error">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="field_row">
                                         <div class="form-group">
                                             <label for="city">City:<span>*</span></label>
                                             <input type="text" class="form-control" id="city" name="city" required>
+                                            @error('city')
+                                                <span class="text-error">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="field_row">
@@ -142,6 +159,9 @@
                                                     <label for="p_email">Email</label>
                                                 </span>
                                             </div>
+                                            @error('method_of_contact')
+                                                <span class="text-error">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="time_to_call">Preferred time to be called</label>
@@ -163,6 +183,9 @@
                                         <div class="form-group col-sm-6">
                                             <label>Physical address of property<span>*</span></label>
                                             <input type="text" class="form-control" id="property_address" name="property_address" >
+                                            @error('property_address')
+                                                <span class="text-error">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="field_row">

@@ -28,9 +28,12 @@
                     </div>
                     <div class="col-7 text-right top_right_text">
                         <div class="mr-auto">
+                            
                             <a href="https://trafalgar.grailafrica.com/" target="_blank" class="p-2 pl-0">Claims</a>
+                            <a href="{{ url('/jobs') }}" class="p-2 pl-0">Careers</a>
                             <a href="{{ route('online-services') }}" class="p-2 pl-0">Online services</a>
-                            <a target="_blank" href="https://trafalgar.estatemate.co.za/login" class="p-2 pl-0">Property app</a>
+                            <!--<a target="_blank" href="https://trafalgar.estatemate.co.za/login" class="p-2 pl-0">Property app</a>-->
+                            <a target="_blank" href="https://trafalgar-app.unibase.solutions/" class="p-2 pl-0">Web App</a>
                           
                             <a target="_blank" href="http://webgui.unibase.co.za/scripts/eri.dll?pagename=sectitlelandtrarev1revMW1" class="p-2 pl-0">Property portal</a>
                         </div>
