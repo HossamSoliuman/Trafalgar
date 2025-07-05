@@ -170,7 +170,7 @@
                         </ul>
 
                     </div>
-
+                    @include('frontPart.manage.faqs.estateManagement')
                 </div>
                 <div class="guldenland_sidebar">
                     @include('frontPart/rightBar/rightBarQuickContactForm')

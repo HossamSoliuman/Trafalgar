@@ -363,6 +363,7 @@
                                 More</a>
                         </span>
                     </div>
+                    @include('frontPart.manage.faqs.communitySchemeManagement')
                 </div>
                 <div class="guldenland_sidebar">
                     @include('frontPart/rightBar/rightBarQuickContactForm')

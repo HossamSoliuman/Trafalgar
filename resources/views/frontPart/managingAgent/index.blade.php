@@ -193,6 +193,7 @@
                             <a href="{{ route('managing-agent.ema') }}">Read More</a>
                         </span>
                     </div>
+                    @include('frontPart.manage.faqs.managingAgents')
                 </div>
                 <div class="guldenland_sidebar">
                     @include('frontPart/rightBar/rightBarQuickContactForm')
