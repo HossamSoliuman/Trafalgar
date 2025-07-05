@@ -82,8 +82,8 @@ Route::get('lost-password', [ForgotPasswordController::class, 'showLinkRequestFo
 // updated sitemap
 
 // Route::get('/generate-sitemap', function () {
-    
-    
+
+
 //     $sitemap = Sitemap::create();
 
 //     $temporaryPath = public_path('temp-sitemap.xml');
@@ -99,12 +99,12 @@ Route::get('lost-password', [ForgotPasswordController::class, 'showLinkRequestFo
 //             $crawler->setMaximumDepth(2); // 1 or 2 levels deep
 //         })
 //         ->writeToFile($temporaryPath);
-        
+
 //         $crawledUrls = simplexml_load_file($temporaryPath);
 //         foreach ($crawledUrls->url as $url) {
 //             $sitemap->add(Url::create((string)$url->loc));
 //         }
-    
+
 //         // 2. Add dynamic job detail pages
 //         $jobs = Job::all();
 //         foreach ($jobs as $job) {
@@ -374,7 +374,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'admin'], function () {
     Route::get('/setting', [SettingController::class, 'index'])->name('admin.setting');
     Route::get('/user', [UserController::class, 'index'])->name('admin.user');
     Route::post('/setting', [SettingController::class, 'update'])->name('admin.setting.update');
-    
+
     Route::get('sitemap', [SettingController::class, 'sitemap'])->name('admin.sitemap');
     // Route::get('/generate-sitemap', [SettingController::class, 'generate'])->name('admin.generate.sitemap');
 
@@ -394,8 +394,8 @@ Route::group(['prefix' => 'admin',  'middleware' => 'admin'], function () {
 
     // create route for JobManagementController controller
     Route::resource('job-management', JobManagementController::class, ['as' => 'admin']);
-    Route::get('/job-order',[JobManagementController::class,'order'])->name('admin.job.order');
-    Route::post('job-update-order',[JobManagementController::class,'updateOrder'])->name('admin.job.update.order');
+    Route::get('/job-order', [JobManagementController::class, 'order'])->name('admin.job.order');
+    Route::post('job-update-order', [JobManagementController::class, 'updateOrder'])->name('admin.job.update.order');
     Route::get('job-management/display/{id}', [JobManagementController::class, 'display'])->name('admin.job-management.display');
     Route::get('job-management/notDisplay/{id}', [JobManagementController::class, 'notDisplay'])->name('admin.job-management.not-display');
 
@@ -743,7 +743,8 @@ Route::post('apply-for-job', [AppliedJobController::class, 'applyForJob'])->name
 // create route for PropertyManagementController controller
 Route::get('property-management-quote-request', [PropertyManagementController::class, 'propertyManagementQuoteRequest'])->name('property-management-quote-request');
 
-Route::get('online-services/online-applications/property-management-quote-request', [PropertyManagementController::class, 'propertyManagementQuoteRequests'])->name('online-services.online-applications.property-management-quote-request');
+Route::get('online-services/online-applications/property-management-quote-request', [PropertyManagementController::class, 'propertyManagementQuoteRequests'])
+->name('online-services.online-applications.property-management-quote-request');
 
 Route::post('property-quote-request-email', [PropertyManagementController::class, 'propertyQuoteRequestEmail'])->name('property-quote-request-email');
 Route::get('report-maintenance-issues', [PropertyManagementController::class, 'reportMaintenanceIssues'])->name('report-maintenance-issues');
