@@ -170,6 +170,7 @@
                         </ul>
 
                     </div>
+                    @include('frontPart.manage.quickLinksBlocks')
                     @include('frontPart.manage.faqs.estateManagement')
                 </div>
                 <div class="guldenland_sidebar">

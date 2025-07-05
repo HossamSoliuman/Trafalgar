@@ -246,9 +246,10 @@
                     </div>
                     <h5 class="text-center">Trafalgar’s Standard Property Management Scope Is Flexible And May Be
                         Conveniently Customised To A Particular Property’s Context, Challenges And Requirements</h4>
+                        @include('frontPart.manage.quickLinksBlocks')
                         @include('frontPart.manage.faqs.hOAManagement')
                 </div>
-                
+
                 <div class="guldenland_sidebar">
                     <div class="sidelist contact_sidelist">
                         <h4>Quick Contact</h4>

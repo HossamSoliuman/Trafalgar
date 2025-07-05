@@ -211,6 +211,8 @@
                                     href="{{ route('managing-agent.body-corporate-managing-agent') }}"><b>body corporate
                                         managing agents</b></a> are your trusted partner for all your body corporate
                                 management needs. </p>
+                            @include('frontPart.manage.quickLinksBlocks')
+
                             @include('frontPart.manage.faqs.bodyCorporateManagement')
 
                         </div>

@@ -172,6 +172,7 @@
                                         management</b></a> needs. Let us help you achieve your real estate goals while
                                 providing peace of mind in managing your properties.
                             </p>
+                            @include('frontPart.manage.quickLinksBlocks')
                             @include('frontPart.manage.faqs.propertyDeveloperServices')
                         </div>
                     </div>

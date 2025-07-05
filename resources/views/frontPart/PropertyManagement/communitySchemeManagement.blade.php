@@ -102,7 +102,8 @@
                             managed by Trafalgar is allocated a dedicated residential portfolio manager as a single point of
                             entry and primary communication channel.</p>
                         <span class="read-more">
-                            <a href="{{ route('property-management.sectional-title-and-hoa-management.hoa-management') }}">Read More</a>
+                            <a href="{{ route('property-management.sectional-title-and-hoa-management.hoa-management') }}">Read
+                                More</a>
                         </span>
                     </div>
                     <div class="each_manage_section" id="estate_mang">
@@ -139,7 +140,8 @@
                         <p>Preparation of initial budget and calculation of levies and common area expenditure. Assistance
                             with (HOA)</p>
                         <span class="read-more">
-                            <a href="{{ route('property-management.sectional-title-and-hoa-management.developer-services') }}">Read
+                            <a
+                                href="{{ route('property-management.sectional-title-and-hoa-management.developer-services') }}">Read
                                 More</a>
                         </span>
                     </div>
@@ -363,6 +365,7 @@
                                 More</a>
                         </span>
                     </div>
+                    @include('frontPart.manage.quickLinksBlocks')
                     @include('frontPart.manage.faqs.communitySchemeManagement')
                 </div>
                 <div class="guldenland_sidebar">

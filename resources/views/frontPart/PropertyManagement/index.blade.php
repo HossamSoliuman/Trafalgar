@@ -111,28 +111,9 @@
             </div>
         </div>
 
-        <!--<div class="training_videos">-->
-        <!--    <div class="container">-->
-        <!--        <h2>Property Management Training Videos</h2>-->
-        <!--        <p>We have collated a number of short videos, covering a range of very important sectional title and HOA management topics. These videos are targeted at Trustees and Directors, aiming to clearly and simply explain how and when important governance milestones can be achieved.</p>-->
-        <!--<h4>-->
-        <!--            <a class="theme-btn d-inline-block h-auto" href="https://training.trafalgar.co.za/property-management-training-videos">See the Videos</a>-->
-        <!--</h4>-->
-        <!--    </div>-->
-        <!--</div>-->
-
         <div class="container">
             <div class="guldenland_products">
                 <div class="guldenland_products_listing manage_section_listing">
-                    <!--div class="each_manage_section text-right">
-                                                                                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/CbFub5Gaxy4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                                                        <a href="#" style="color:#6e0d16"><small>Click here to see the videos</small></a>
-                                                                                    </div>-->
-                    <!--<div class="each_manage_section">-->
-                    <!--    <h4><a href="javascript:void(0)">PROPERTY MANAGEMENT TRAINING VIDEOS</a></h4>-->
-                    <!--    <p>We have collated a number of short videos, covering a range of very important sectional title and HOA management topics. These videos are targeted at Trustees and Directors, aiming to clearly and simply explain how and when important governance milestones can be achieved.</p>-->
-                    <!--    <p>As a Trafalgar client, you are very welcome to use our property management services, which are comprised of:</p>-->
-                    <!--</div>-->
                     <p class="m-0">As a Trafalgar client, you are very welcome to use our property management services,
                         which are comprised of:</p>
                     <div class="each_manage_section" id="community_scheme_management">
@@ -268,7 +249,8 @@
                                     experience.</a></li>
                             <li><a href="{{ asset('storage/brochure/Full-Report-Pack-Sample.pdf') }}">Sample Property
                                     Management Report</a></li>
-                            <li><a href="{{ route('property-management.easy-guide-to-body-corporate-resolutions') }}">Easy guide to
+                            <li><a href="{{ route('property-management.easy-guide-to-body-corporate-resolutions') }}">Easy
+                                    guide to
                                     Body Corporate Resolutions</a></li>
                         </ul>
                     </div>
@@ -305,6 +287,7 @@
                                     More</a>
                             </span>
                     </div>
+                    @include('frontPart.manage.quickLinksBlocks')
 
                 </div>
                 <div class="guldenland_sidebar">

@@ -246,6 +246,7 @@
                             <li>The submission and completion of Provisional and Annual Tax Returns</li>
                         </ul>
                     </div>
+                    @include('frontPart.manage.quickLinksBlocks')
                     @include('frontPart.manage.faqs.sectionalTitleManagement')
                 </div>
                 <div class="guldenland_sidebar">

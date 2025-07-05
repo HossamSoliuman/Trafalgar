@@ -109,8 +109,8 @@
                             <a href="{{ route('online-services') }}">Click here</a>
                         </span>
                     </div>
+                    @include('frontPart.manage.quickLinksBlocks')
                     @include('frontPart.manage.faqs.commercialPropertyManagement')
-
                 </div>
                 <div class="guldenland_sidebar">
                     @include('frontPart/rightBar/rightBarQuickContactForm')

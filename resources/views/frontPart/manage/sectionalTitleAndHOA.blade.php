@@ -134,7 +134,7 @@
                                 More</a>
                         </span>
                     </div>
-
+                    @include('frontPart.manage.quickLinksBlocks')
                 </div>
                 <div class="guldenland_sidebar">
                     @include('frontPart/rightBar/rightBarQuickContactForm')
