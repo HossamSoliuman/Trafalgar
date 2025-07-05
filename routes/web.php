@@ -578,6 +578,7 @@ Route::get('/privacy-policy', [PageController::class, 'index'])->name('privacy-p
 
 // create route for ManageController controller
 Route::get('property-management/sectional-title-and-hoa-management', [ManageController::class, 'sectionalTitleAndHoa'])->name('property-management.sectional-title-and-hoa-management');
+Route::get('property-management/service-options', [ManageController::class, 'serviceOptions'])->name('property-management.service-options');
 Route::get('property-management/commercial-property-management', [ManageController::class, 'commercialPropertyManagement'])->name('property-management.commercial-property-management');
 
 Route::get('property-management/sectional-title-and-hoa-management/developer-services', [ManageController::class, 'developerServices'])->name('property-management.sectional-title-and-hoa-management.developer-services');
@@ -744,7 +745,7 @@ Route::post('apply-for-job', [AppliedJobController::class, 'applyForJob'])->name
 Route::get('property-management-quote-request', [PropertyManagementController::class, 'propertyManagementQuoteRequest'])->name('property-management-quote-request');
 
 Route::get('online-services/online-applications/property-management-quote-request', [PropertyManagementController::class, 'propertyManagementQuoteRequests'])
-->name('online-services.online-applications.property-management-quote-request');
+    ->name('online-services.online-applications.property-management-quote-request');
 
 Route::post('property-quote-request-email', [PropertyManagementController::class, 'propertyQuoteRequestEmail'])->name('property-quote-request-email');
 Route::get('report-maintenance-issues', [PropertyManagementController::class, 'reportMaintenanceIssues'])->name('report-maintenance-issues');
