@@ -580,8 +580,11 @@ Route::get('/privacy-policy', [PageController::class, 'index'])->name('privacy-p
 Route::get('property-management/sectional-title-and-hoa-management', [ManageController::class, 'sectionalTitleAndHoa'])->name('property-management.sectional-title-and-hoa-management');
 Route::get('property-management/service-options', [ManageController::class, 'serviceOptions'])->name('property-management.service-options');
 Route::get('property-management/commercial-property-management', [ManageController::class, 'commercialPropertyManagement'])->name('property-management.commercial-property-management');
-
-Route::get('property-management/sectional-title-and-hoa-management/developer-services', [ManageController::class, 'developerServices'])->name('property-management.sectional-title-and-hoa-management.developer-services');
+Route::get('property-management/sectional-title-and-hoa-management/property-developer-services', [ManageController::class, 'developerServices'])->name('property-management.sectional-title-and-hoa-management.developer-services');
+Route::redirect(
+    'property-management/sectional-title-and-hoa-management/developer-services',
+    '/property-management/sectional-title-and-hoa-management/property-developer-services'
+);
 Route::get('property-management/commercial-property-management/commercial-brokering-services', [ManageController::class, 'commercialBrokeringServices'])->name('property-management.commercial-property-management.commercial-brokering-services');
 Route::get('property-management/commercial-property-management/commercial-landlord-services', [ManageController::class, 'commercialLandlordServices'])->name('property-management.commercial-property-management.commercial-landlord-services');
 Route::get('property-management/executive-managing-agent', [ManageController::class, 'executiveManagingAgent'])->name('property-management.executive-managing-agent');

@@ -13,7 +13,7 @@
       <div class="container">
           <ul>
               <li><a href="#">Manage</a></li>
-              <li><a href="#">Developer Services</a></li>
+              <li><a href="#">Property Developer Services</a></li>
           </ul>
       </div>
     </div>
@@ -23,7 +23,7 @@
     <section class="guldenland_section manage_section mt-5">
         <div class="container">
             <div class="heading h1_tag mb-4">
-                <h1>Developer Services</h1>
+                <h1>Property Developer Services</h1>
                 <div class="manage-paragraph text-justify">
                     <p>Trafalgar offers a comprehensive range of advisory and support services for residential and sectional title property developers and their professional teams. Property management input is recommended from an early design stage of a new development and sectional title scheme. Based on signing a management agreement, the advisory services listed below are provided free of charge to assist with setting up the development and sectional title building in an effective and legally compliant manner.</p>
                 </div>
