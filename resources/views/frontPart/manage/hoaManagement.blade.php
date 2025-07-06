@@ -250,7 +250,7 @@
                         @include('frontPart.manage.faqs.hOAManagement')
                 </div>
 
-                 <div class="guldenland_sidebar">
+                <div class="guldenland_sidebar">
                     @include('frontPart/rightBar/rightBarQuickContactForm')
                     @include('frontPart/rightBar/rightBarQuickLinkMenu')
 
