@@ -10,6 +10,7 @@
                       name="name">
               </div>
           </div>
+          
           <div class="col-6 pr-2">
               <div class="form-group ">
                   <label for="email">Email<span>*</span></label>
