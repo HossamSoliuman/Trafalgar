@@ -66,173 +66,16 @@ use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use App\Models\Job;
 
-Route::get('/test-export', [WeeklyPropertyReportController::class, 'export']);
 
-
-Route::get('/test-report-mail', function () {
-    $url = 'https://example.com/sample.xlsx';
-    Mail::to('capig61879@bulmp3.com')->send(new \App\Mail\WeeklyExcelPropertyReport($url));
-    return 'Sent';
-});
-
-
-
-Route::get('/clear-all', function () {
-    Artisan::call('optimize:clear');
-});
 
 Route::get('sitemap', [SitemapController::class, 'index'])->name('sitemap');
 Route::get('/sitemap/regenerate', [SitemapController::class, 'regenerate'])->name('sitemap.regenerate');
+Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap'])->name('sitemap.generate');
+Route::get('/updated-sitemap.xml', [SitemapController::class, 'updatedSitemap'])->name('updated-sitemap');
 
 
 
 Route::get('lost-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('lost-password');
-
-
-
-// updated sitemap
-
-// Route::get('/generate-sitemap', function () {
-    
-    
-//     $sitemap = Sitemap::create();
-
-//     $temporaryPath = public_path('temp-sitemap.xml');
-
-//     SitemapGenerator::create(config('app.url'))
-//         ->hasCrawled(function (Spatie\Sitemap\Tags\Url $url) {
-//             // Optional: Filter out unwanted URLs to reduce load
-//             return $url;
-//         })
-//         ->configureCrawler(function (\Spatie\Crawler\Crawler $crawler) {
-//             // Delay between requests to reduce server load
-//             $crawler->setDelayBetweenRequests(1000); // in ms
-//             $crawler->setMaximumDepth(2); // 1 or 2 levels deep
-//         })
-//         ->writeToFile($temporaryPath);
-        
-//         $crawledUrls = simplexml_load_file($temporaryPath);
-//         foreach ($crawledUrls->url as $url) {
-//             $sitemap->add(Url::create((string)$url->loc));
-//         }
-    
-//         // 2. Add dynamic job detail pages
-//         $jobs = Job::all();
-//         foreach ($jobs as $job) {
-//             $sitemap->add(
-//                 Url::create(url('/jobs/' . $job->slug)) // Adjust URL structure
-//                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
-//                     ->setPriority(0.8)
-//             );
-//         }
-
-//     // Optionally, move the temp file to final location
-//     rename($temporaryPath, public_path('sitemap.xml'));
-
-//     return 'Sitemap generated successfully!';
-// })->name('generate-sitemap');
-
-
-// Route::get('/generate-sitemap', function () {
-//     $sitemap = Sitemap::create();
-
-//     // 1. Add crawled URLs
-//     $temporaryPath = public_path('temp-sitemap.xml');
-
-//     SitemapGenerator::create(config('app.url'))
-//         ->hasCrawled(function (Url $url) {
-//             return $url;
-//         })
-//         ->configureCrawler(function (\Spatie\Crawler\Crawler $crawler) {
-//             $crawler->setDelayBetweenRequests(1000);
-//             $crawler->setMaximumDepth(2);
-//         })
-//         ->writeToFile($temporaryPath);
-
-//     // Load crawled URLs
-//     $crawledUrls = simplexml_load_file($temporaryPath);
-//     foreach ($crawledUrls->url as $url) {
-//         $sitemap->add(Url::create((string)$url->loc));
-//     }
-
-//     // 2. Add dynamic job detail pages
-//     $jobs = Job::all();
-//     foreach ($jobs as $job) {
-//         $sitemap->add(
-//             Url::create(url('/job/' . $job->job_title_slug)) // Adjust URL structure
-//                 ->setLastModificationDate($job->updated_at)
-//                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
-//                 ->setPriority(0.8)
-//         );
-//     }
-
-//     // 3. Save final sitemap
-//     $sitemap->writeToFile(public_path('sitemap.xml'));
-
-//     // Clean up temp file
-//     @unlink($temporaryPath);
-
-//     return 'Sitemap generated with job details!';
-// })->name('generate-sitemap');;
-
-Route::get('/generate-sitemap', function () {
-    $sitemap = Sitemap::create();
-
-    // Add static GET routes
-    foreach (Route::getRoutes() as $route) {
-        // Only GET routes
-        if (in_array('GET', $route->methods())) {
-            // Only routes without parameters
-            if (!str_contains($route->uri(), '{')) {
-                // Only routes without auth middleware
-                $middlewares = $route->middleware();
-                if (!in_array('auth', $middlewares)) {
-                    $sitemap->add(
-                        Url::create(url($route->uri()))
-                            ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
-                            ->setPriority(0.7)
-                    );
-                }
-            }
-        }
-    }
-
-    // Add dynamic job detail pages (still manually)
-    foreach (Job::select('job_title_slug', 'updated_at')->cursor() as $job) {
-        $sitemap->add(
-            Url::create(url('/job/' . $job->job_title_slug))
-                ->setLastModificationDate($job->updated_at)
-                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
-                ->setPriority(0.8)
-        );
-    }
-
-    // Save sitemap
-    $sitemap->writeToFile(public_path('sitemap.xml'));
-
-    return redirect()->back()->with('success', 'sitemap regenerated successfully');
-})->name('generate-sitemap');
-
-
-
-
-// Route::get('/generate-sitemap', function () {
-//     SitemapGenerator::create(config('app.url'))
-//         ->writeToFile(public_path('sitemap.xml'));
-//     return 'Sitemap generated successfully!';
-// })->name('generate-sitemap');
-
-Route::get('/updated-sitemap.xml', function () {
-    $path = public_path('sitemap.xml');
-
-    if (!file_exists($path)) {
-        abort(404, 'Sitemap not found');
-    }
-    return response()->file($path, [
-        'Content-Type' => 'application/xml',
-    ]);
-})->name('updated-sitemap');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -347,11 +190,6 @@ Route::get('/admin', function () {
 
 
 
-// Route::get('/admin/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.dashboard');
-// Route::get('/test', function () {
-//   // echo "dfffjf";
-//     return view('auth.adminlogin');
-// })->middleware('guest');
 
 //// admin login route group ////
 Route::group(['prefix' => 'admin',  'middleware' => 'admin'], function () {
