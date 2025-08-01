@@ -1,4 +1,7 @@
 <section class="header_section">
+    <style>
+        .site-menu.main-menu .visibleinmobileonly{display:none !important;}
+    </style>
     <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
             <div class="site-mobile-menu-close mt-3">
@@ -123,6 +126,16 @@
                                         </ul>
                                     </li>
                                     <li><a href="{{ route('contact-us') }}" class="nav-link">Contact</a></li>
+                                    <li class="visibleinmobileonly"><a href="https://trafalgar.grailafrica.com/" target="_blank" class="nav-link">Claims</a></li>
+                                    <li class="visibleinmobileonly"><a href="{{ url('/jobs') }}" class="nav-link">Careers</a></li>
+                                    <li class="visibleinmobileonly"><a href="{{ route('online-services') }}" class="nav-link">Online services</a></li>
+                                    <li class="visibleinmobileonly"><a target="_blank" href="https://trafalgar-app.unibase.solutions/" class="nav-link">Web App</a></li>
+                                    <li class="visibleinmobileonly"><a target="_blank" href="http://webgui.unibase.co.za/scripts/eri.dll?pagename=sectitlelandtrarev1revMW1" class="nav-link">Property portal</a></li>
+                            
+                            <!--<a target="_blank" href="https://trafalgar.estatemate.co.za/login" class="p-2 pl-0">Property app</a>-->
+                            
+                          
+                            
                                     <li class="has-children">
                                         <a href="#" class="nav-link"><span class="icon-user-circle-o navicon"></span></a>
                                         <ul class="dropdown arrow-top">

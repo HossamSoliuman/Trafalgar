@@ -573,7 +573,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+                                  
                                 </div>
 
                             </div>
@@ -1383,11 +1383,12 @@
 
                         <div class="form-group">
 
-                            <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}"></div>
+                           
                             @if ($errors->has('g-recaptcha-response'))
                                 <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
                             @endif
                         </div>
+                         <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
                         <button type="submit" class="m-0 form-control">Send message</button>
                     </div>
 
@@ -1406,6 +1407,20 @@
     @include('frontPart/mainFooter')
 
     <!-- main footer section  -->
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LcxV28rAAAAAM_v-2wPlg8TSyl862BRtrKhjtJS"></script>
+
+<script>
+    document.getElementById('trafalgar_contactus').addEventListener('submit', function (e) {
+        e.preventDefault();
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6LcxV28rAAAAAM_v-2wPlg8TSyl862BRtrKhjtJS', { action: 'contact_us' }).then(function (token) {
+                document.getElementById('g-recaptcha-response').value = token;
+                e.target.submit();
+            });
+        });
+    });
+</script>
 
     <!-- copyright section  -->
 @endsection

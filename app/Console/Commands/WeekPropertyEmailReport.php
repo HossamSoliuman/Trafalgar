@@ -2,13 +2,12 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Console\Command;
+use App\Http\Controllers\Admin\WeeklyPropertyReportController;
 use Excel;
 use App\Exports\WeeklyPropertyReportExport;
 use Mail;
 use App\Mail\WeeklyExcelPropertyReport;
-use Illuminate\Console\Command;
 
 class WeekPropertyEmailReport extends Command
 {
@@ -17,7 +16,7 @@ class WeekPropertyEmailReport extends Command
      *
      * @var string
      */
-    protected $signature = 'send:weekly-report';
+    protected $signature = 'WeekPropertyEmailReport:cron';
 
     /**
      * The console command description.
@@ -43,7 +42,22 @@ class WeekPropertyEmailReport extends Command
      */
     public function handle()
     {
-           app(\App\Http\Controllers\Admin\WeeklyPropertyReportController::class)->export();
-
+        
+    //       $path =  'weekly_property_report'.strtotime("now").'.xlsx';
+    //     $excel =  Excel::store(new WeeklyPropertyReportExport, 'weekly_property_report'.strtotime("now").'.xlsx','excelsheet_path');
+    //      $realPath =   asset('storage/weeklyreport/'.$path) ;
+    //   //$realPath = "https://webplan.live/storage/weeklyreport/weekly_property_report1652175541.xlsx";
+    //   Mail::to('arunsain.weblance@gmail.com')->send(new WeeklyExcelPropertyReport($realPath));
+ 
+    //     if (Mail::failures()) {
+    //       \Log::info("Something went wrong");
+    //     }else{
+        
+    //     }
+        \Log::info("Email cron start working");
+      $controller = new WeeklyPropertyReportController(); // make sure to import the controller
+ $controller->export();
+   \Log::info("Email sent successfully");
+       
     }
 }

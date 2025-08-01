@@ -85,20 +85,20 @@
                                                                                         <tbody>
                                                                                        
                                                                                             <tr>
-                                                                                                <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;">Default Name</th>
+                                                                                                <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;">Name</th>
                                                                                                 <td style="padding-left: 15px;font-size: 15px;">{{ ucfirst($details['name']) }}</td>
                                                                                             </tr>
                                                                                             <tr>
-                                                                                                <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;">Default Email</th>
+                                                                                                <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;">Email</th>
                                                                                                 <td style="padding-left: 15px;font-size: 15px;">{{ ucfirst($details['email']) }}</td>
                                                                                             </tr>
                                                                                             <tr>
-                                                                                                <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;">Default Phone</th>
+                                                                                                <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;">Phone</th>
                                                                                                 <td style="padding-left: 15px;font-size: 15px;">{{ ucfirst($details['phone']) }}</td>
                                                                                             </tr>
                                                                                            
                                                                                             <tr>
-                                                                                                <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;vertical-align: baseline;">Default Comment or Question</th>
+                                                                                                <th style="text-align:left;padding-right:30px;background: #690b10;color: #fff;font-size: 15px;vertical-align: baseline;">Comment or Question</th>
                                                                                                 <td style="word-break: break-all;padding-left: 15px;font-size: 15px;">{{ ucfirst($details['comment_or_question']) }}</td>
                                                                                             </tr>
                                                                                         </tbody>

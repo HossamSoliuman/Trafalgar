@@ -663,7 +663,6 @@
                 <div class="contact-form">
                     <h3 class="text-center text-white">Quick Contact</h3>
                     <form action="{{ route('contactus') }}" method="post" id="trafalgar_contactus">
-
                         @csrf
                         <input type="hidden" class="form-control" id="formMain" name="formMain"
                             placeholder="formMain" value="Homepage" required>
@@ -692,10 +691,38 @@
                             <textarea required type="text" class="form-control" id="comment_or_question" rows="3"
                                 placeholder="Message * " name="comment_or_question"></textarea>
                         </div>
-                        <button type="submit" class="m-0">Send message</button>
+                        <!--<button type="submit" class="m-0">Send message</button>-->
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                        
+                        <br/>
+                        <input type="submit" value="Send message">
                     </form>
                 </div>
             @endif
         </div>
     </div>
+  
+  
 </section>
+<script src="https://www.google.com/recaptcha/api.js?render=6LcxV28rAAAAAM_v-2wPlg8TSyl862BRtrKhjtJS"></script>
+
+<script>
+    document.getElementById('trafalgar_contactus').addEventListener('submit', function (e) {
+        e.preventDefault();
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6LcxV28rAAAAAM_v-2wPlg8TSyl862BRtrKhjtJS', { action: 'contact_us' }).then(function (token) {
+                document.getElementById('g-recaptcha-response').value = token;
+                e.target.submit();
+            });
+        });
+    });
+</script>

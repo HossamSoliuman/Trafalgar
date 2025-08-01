@@ -27,7 +27,7 @@ class SyncApiPropertyImportController extends Controller
         $userName_unibase_sandbox = 'unibase_sandbox';
         $password_unibase_sandbox = 'dda4d7c3-96ba-462e-80cf-262fee74f745';
         $token_unibase_sandbox = 'Basic ' . base64_encode($userName_unibase_sandbox . ':' . $password_unibase_sandbox);
-        return $this->importSyncPropertyData($token_unibase_sandbox, $userName_unibase_sandbox);
+        $this->importSyncPropertyData($token_unibase_sandbox, $userName_unibase_sandbox);
         return Redirect::back()->with('success', 'Sync api unibase Property import successfully');
     }
 
@@ -84,7 +84,7 @@ class SyncApiPropertyImportController extends Controller
         $userName_east_london = 'Trafalgar Property Management East London';
         $password_east_london = 'a191f3a4-c618-4743-9c87-c6df426ca3f1';
         $token_east_london = 'Basic ' . base64_encode($userName_east_london . ':' . $password_east_london);
-        return $this->importSyncPropertyData($token_east_london, $userName_east_london);
+        $this->importSyncPropertyData($token_east_london, $userName_east_london);
         return Redirect::back()->with('success', 'Sync api Property import successfully');
     }
 
@@ -134,16 +134,6 @@ class SyncApiPropertyImportController extends Controller
         $response = Http::withHeaders($headers)->get($apiURL);
         $statusCode = $response->status();
         $responseBody = json_decode($response->getBody(), true);
-
-        // $missingIds = [ 11602];
-        // foreach ($responseBody as $item) {
-        //     if (isset($item['clientPropertyID'])) {
-        //         if (in_array($item['clientPropertyID'], $missingIds)) {
-        //             $existIds[] = $item['clientPropertyID'];
-        //         }
-        //     }
-        // }
-        // return $existIds;
         // dd($responseBody);
 
         // if ($statusCode === 200) {
@@ -163,9 +153,9 @@ class SyncApiPropertyImportController extends Controller
             SearchReference::where('api_city_key', $apiUserName)->where('api_type_name', 'syncApi')->delete();
 
             for ($r = 0; $r < count($responseBody); $r++) {
-                // if (!isset($responseBody[$r]['expiryDate'])) {
-                //     continue;
-                // }
+                if (!isset($responseBody[$r]['expiryDate'])) {
+                    continue;
+                }
                 $getCurrentTime = date("Y/m/d H:i:s");
                 $getCurrentTimeValue = strtotime($getCurrentTime);
                 $getDataTime = strtotime($responseBody[$r]['expiryDate']);
@@ -267,7 +257,7 @@ class SyncApiPropertyImportController extends Controller
                         if (!empty($responseBody[$r]['contact'])) {
                             $insertEntegralData->agent_id =  $responseBody[$r]['contact'][0]['clientAgentID'];
                             $insertEntegralData->agent_name = $responseBody[$r]['contact'][0]['fullName'];
-
+                            
                             $insertEntegralData->agent_email = $responseBody[$r]['contact'][0]['email'];
                             $insertEntegralData->agent_phone = $responseBody[$r]['contact'][0]['cell'];
 

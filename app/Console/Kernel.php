@@ -2,18 +2,16 @@
 
 namespace App\Console;
 
-use App\Console\Commands\WeekPropertyEmailReport;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Jobs\SendPendingContactEmails;
-use App\Jobs\SendReportEmail;
 
 class Kernel extends ConsoleKernel
 {
 
     protected $commands = [
         Commands\RemoveExpireProperty::class,
-        WeekPropertyEmailReport::class,
+        Commands\WeekPropertyEmailReport::class,
     ];
     /**
      * Define the application's command schedule.
@@ -24,8 +22,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('removeExpireProperty:cron')->daily();
+        $schedule->command('WeekPropertyEmailReport:cron')->dailyAt('08:00');
         $schedule->job(new SendPendingContactEmails)->cron('*/21 * * * *');
-        $schedule->job(new SendReportEmail)->cron('* * * * *');
     }
 
     /**

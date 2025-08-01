@@ -66,6 +66,17 @@ use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use App\Models\Job;
 
+Route::get('/test-export', [WeeklyPropertyReportController::class, 'export']);
+
+
+Route::get('/test-report-mail', function () {
+    $url = 'https://example.com/sample.xlsx';
+    Mail::to('capig61879@bulmp3.com')->send(new \App\Mail\WeeklyExcelPropertyReport($url));
+    return 'Sent';
+});
+
+
+
 Route::get('/clear-all', function () {
     Artisan::call('optimize:clear');
 });

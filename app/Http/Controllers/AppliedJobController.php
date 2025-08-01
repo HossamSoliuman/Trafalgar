@@ -95,9 +95,9 @@ class AppliedJobController extends Controller
      
         
 
-        // Mail::to($appliedJob->job->hr_email)->send(new AppliedJobMail($appliedJob));
-        // $email = $appliedJob->job->hr_email;
-        $email = 'queries@trafalgar.co.za';
+        Mail::to($appliedJob->job->hr_email)->send(new AppliedJobMail($appliedJob));
+        $email = $appliedJob->job->hr_email;
+        // $email = 'queries@trafalgar.co.za';
         if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             try {
                 Mail::to($email)->send(new AppliedJobMail($appliedJob));
