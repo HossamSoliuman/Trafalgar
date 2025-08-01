@@ -21,7 +21,7 @@
     <!--<link rel="stylesheet" href="{{ asset('front/mainPage/bootstrap.min.css') }}"> -->
     <!--<link rel="stylesheet" href="{{ asset('front/mainPage/style2.css') }}">-->
     <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('front/css/forms.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('front/css/forms.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('front/css/responsive.css') }}">
     <style>
         @media (min-width: 1201px) {

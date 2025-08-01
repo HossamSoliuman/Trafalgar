@@ -219,63 +219,7 @@ class PropertyController extends Controller
         return view('frontPart.agentDetailPage', compact('setting'));
     }
 
-    // public function propertydetail(Request $request)
-    // {
-
-    //     $request->propertid;
-    //     $townName = EntegralApiData::select('api_city_key')->where('property_id', $request->propertid)
-    //         ->first();
-
-    //     if ($townName->api_city_key == "durban")
-    //     {
-    //         $token = 'heJ2Hmr5Ax692JkGVtf1oU2bAuRqHK9NDspia25sCyNYWHRjy+BD3AxQhpggFB/O';
-    //     }
-    //     else if ($townName->api_city_key == "capeTown")
-    //     {
-    //         $token = 'pdab3oCUefEgYMWcwEbwGaO3YOwyMsCFLHv+J9wRLWEar7Vb+K/AwKoCbJf6vuIF';
-    //     }
-    //     else if ($townName->api_city_key == "portElizabeth")
-    //     {
-    //         $token = 'oVfwb/YN/rO9Hhj99grZhpzC/5A2yEH0O4GyN+o7gJO01ME5yvJgkJB7UhgI5SWc';
-    //     }
-    //     else if ($townName->api_city_key == "pretoria")
-    //     {
-    //         $token = 'dwvFM9KwKjZChmcrPDhpIvMi8/O4dFoeghs/Xmrob5h8Q99GT6q+qaCrAONJ7uIc';
-    //     }
-    //     else if($townName->api_city_key == 'johannesBurg')
-    //     {
-    //         $token = 'iJqzkct/9+S333CWawiPzquO43KX2PNfdceo5Y10Y5W9Z/h+WReevEFIujLvrkJ7';
-    //     }
-    //     $apiURL = 'https://baseapi.entegral.net/api/v1/properties/' . $request->propertid;
-
-    //     // Headers
-    //     $headers = ['Token' => $token, 'Accept' => 'application/json'];
-
-    //     $response = Http::withHeaders($headers)->get($apiURL);
-    //     $statusCode = $response->status();
-    //     $responseBody = json_decode($response->getBody() , true);
-
-    //     $propertyData = (object)$responseBody;
-    //     // return view('frontPart.singlePropertyDetail',compact('propertyData'));
-    //     $setting = Setting::find(1);
-    //     $searchReferences = SearchReference::select(["id", "search_name", "search_type"])->get();
-    //     $propertyDetail = EntegralApiData::where('property_id', $request->propertid)
-    //         ->first();
-    //     $agentDetail = $this->getAgentDetailApiById($propertyDetail->agent_id);
-
-    //       /* $getDistinctSuburb = EntegralApiData::distinct('suburb')->select('suburb')->Where('province',$propertyDetail->province)->inRandomOrder()
-    //             ->limit(30)
-    //             ->get();*/
-
-    //     $getDistinctSuburb = EntegralApiData::distinct('suburb')->select('suburb')->Where('province',$propertyDetail->province)
-    //             ->orderBy('suburb', 'asc')
-    //             ->get();   
-
-
-
-    //     return view('frontPart.propertySearching.propertyDetail', compact('setting', 'propertyData', 'propertyDetail', 'agentDetail','getDistinctSuburb'));
-    // }
-
+    
 
     public function propertydetail(Request $request)
     {
@@ -299,7 +243,7 @@ class PropertyController extends Controller
         $agentDetail = Agent::where('agent_name_slug', $propertyDetail->agent_name_slug)
             ->where('api_name', 'Entegral api')
             ->first();
-        
+
         if ($propertyDetail->mandate_saletype == "for rent") {
             $getDistinctSuburb = EntegralApiData::where('mandate_saletype', 'for rent')
                 ->where('province', '!=', 'Unalloc')
@@ -322,14 +266,16 @@ class PropertyController extends Controller
         $checkPropertyFavourite = [
             'isPropertyFavourite' => $checkFavouritePropertyExist ? 1 : 0
         ];
-        // return $propertyData->photos;
+        return $propertyData->photos;
         // Update photo URLs to serve via Laravel
-        $propertyData->photos = collect($propertyData->photos)->map(function ($photo) {
-            if (isset($photo['imgUrl'])) {
-                $photo['imgUrl'] = route('property.fetch-image', ['url' => urlencode($photo['imgUrl'])]);
-            }
-            return $photo;
-        });
+        if (isset($propertyData->photos)) {
+            $propertyData->photos = collect($propertyData->photos)->map(function ($photo) {
+                if (isset($photo['imgUrl'])) {
+                    $photo['imgUrl'] = route('property.fetch-image', ['url' => urlencode($photo['imgUrl'])]);
+                }
+                return $photo;
+            });
+        }
 
         $checkPropertyFavourite = (object)$checkPropertyFavourite;
 

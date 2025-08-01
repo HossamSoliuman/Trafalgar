@@ -778,7 +778,7 @@
 
                                     <tr>
                                         <td><b>Land size:</b></td>
-                                        <td>{{ isset($propertyData->landSize) && $propertyData->landSize != '' ? $propertyData->landSize . ' ' . $propertyData->landsizeType : 'No' }}
+                                        <td>{{ isset($propertyData->landSize) && $propertyData->landSize != '' ? $propertyData->landSize . ' ' . ($propertyData->landsizeType ?? '') : 'No' }}
                                         </td>
                                         <td><b>Levy:</b></td>
                                         <td>{{ isset($propertyData->levy) && $propertyData->levy != '' ? $propertyData->levy : '' }}
