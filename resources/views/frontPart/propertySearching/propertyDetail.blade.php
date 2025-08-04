@@ -145,59 +145,76 @@
         </div>
     </div>
     <!-- breadcrumb -->
-
+    @php
+        $isApartmentBachelor =
+            strtolower($propertyDetail->property_type) == 'apartment' && $propertyDetail->bedrooms == 0;
+        $propertyTitle =
+            $propertyDetail->bedrooms != 0
+                ? $propertyDetail->bedrooms . ' Bedroom'
+                : ($isApartmentBachelor
+                    ? 'Bachelor'
+                    : '');
+        $propertyTitle .=
+            ' ' .
+            ucwords(
+                $propertyDetail->property_type .
+                    ' ' .
+                    $propertyDetail->mandate_saletype .
+                    ' in ' .
+                    $propertyDetail->suburb,
+            );
+    @endphp
     <!-- main slider -->
     <section class="main-slider-section">
         <div class="container">
-
-            @if ($propertyDetail->api_type_name === 'syncApi')
-                @if (!empty($propertyData->photos))
-                    <div class="slider_bg">
-                        <div id="sync1" class="owl-carousel">
-                            @for ($r = 0; $r < count($propertyData->photos); $r++)
-                                <div class="item">
-                                    <a href="{{ $propertyData->photos[$r]['imgUrl'] }}" data-fancybox="group">
-                                        <img class="img-fluid" src="{{ $propertyData->photos[$r]['imgUrl'] }}"
-                                            alt="{{ $propertyData->photos[$r]['imgUrl'] }}" />
-                                    </a>
-                                </div>
-                            @endfor
+            @if ($propertyDetail->api_type_name === 'syncApi' && !empty($propertyData->photos))
+                <div class="slider_bg">
+                    <div id="sync1" class="owl-carousel">
+                        @foreach ($propertyData->photos as $index => $photo)
+                            <div class="item">
+                                <a href="{{ $photo['imgUrl'] }}" data-fancybox="group">
+                                    <img class="img-fluid" src="{{ $photo['imgUrl'] }}"
+                                        alt="{{ $propertyTitle . '-' . ($index + 1) }}" />
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div id="sync2" class="owl-carousel">
+                    @foreach ($propertyData->photos as $index => $photo)
+                        <div class="item">
+                            <img class="img-fluid" src="{{ $photo['imgUrl'] }}"
+                                alt="{{ $propertyTitle . '-' . ($index + 1) }}" />
                         </div>
-                    </div>
-                    <div id="sync2" class="owl-carousel">
-                        @for ($rs = 0; $rs < count($propertyData->photos); $rs++)
-                            <div class="item"><img class="img-fluid" src="{{ $propertyData->photos[$rs]['imgUrl'] }}"
-                                    alt="{{ $propertyData->photos[$rs]['imgUrl'] }}" /></div>
-                        @endfor
-                    </div>
-                @endif
+                    @endforeach
+                </div>
             @endif
 
-            @if ($propertyDetail->api_type_name === 'baseEntegralApi')
-                @if (!empty($propertyData->photos))
-                    <div class="slider_bg">
-                        <div id="sync1" class="owl-carousel">
-                            @for ($r = 0; $r < count($propertyData->photos); $r++)
-                                <div class="item">
-                                    <a href="{{ $propertyData->photos[$r]['url_large'] }}" data-fancybox="group">
-                                        <img class="img-fluid" src="{{ $propertyData->photos[$r]['url_large'] }}"
-                                            alt="{{ $propertyData->photos[$r]['url_large'] }}" />
-                                    </a>
-                                </div>
-                            @endfor
+            @if ($propertyDetail->api_type_name === 'baseEntegralApi' && !empty($propertyData->photos))
+                <div class="slider_bg">
+                    <div id="sync1" class="owl-carousel">
+                        @foreach ($propertyData->photos as $index => $photo)
+                            <div class="item">
+                                <a href="{{ $photo['url_large'] }}" data-fancybox="group">
+                                    <img class="img-fluid" src="{{ $photo['url_large'] }}"
+                                        alt="{{ $propertyTitle . '-' . ($index + 1) }}" />
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div id="sync2" class="owl-carousel">
+                    @foreach ($propertyData->photos as $index => $photo)
+                        <div class="item">
+                            <img class="img-fluid" src="{{ $photo['url_large'] }}"
+                                alt="{{ $propertyTitle . '-' . ($index + 1) }}" />
                         </div>
-                    </div>
-                    <div id="sync2" class="owl-carousel">
-                        @for ($rs = 0; $rs < count($propertyData->photos); $rs++)
-                            <div class="item"><img class="img-fluid" src="{{ $propertyData->photos[$rs]['url_large'] }}"
-                                    alt="{{ $propertyData->photos[$rs]['url_large'] }}" /></div>
-                        @endfor
-                    </div>
-                @endif
+                    @endforeach
+                </div>
             @endif
-
         </div>
     </section>
+
     <!-- end main slider -->
 
     <!-- guldenland section  -->
@@ -215,17 +232,17 @@
                                         <!--<sub>{{ isset($propertyData->mandate_saletypeunit) ? $propertyData->mandate_saletypeunit : '' }}</sub>-->
                                     </h2>
 
-                                    <p
-                                        title='   @if ($propertyDetail->bedrooms != 0) {{ $propertyDetail->bedrooms . ' Bedroom' }}
-                                  @elseif(strtolower($propertyDetail->property_type) == 'apartment')
-                                  Bachelor @endif {{ ucwords($propertyDetail->property_type . ' ' . $propertyDetail->mandate_saletype . ' ' . 'in' . ' ' . $propertyDetail->suburb) }}'>
+
+
+                                    <p title="{{ $propertyTitle }}">
                                         @if ($propertyDetail->bedrooms != 0)
                                             {{ $propertyDetail->bedrooms . ' Bedroom' }}
-                                        @elseif(strtolower($propertyDetail->property_type) == 'apartment')
+                                        @elseif($isApartmentBachelor)
                                             Bachelor
                                         @endif
-                                        {{ ucwords($propertyDetail->property_type . ' ' . $propertyDetail->mandate_saletype . ' ' . 'in' . ' ' . $propertyDetail->suburb) }}
+                                        {{ ucwords($propertyDetail->property_type . ' ' . $propertyDetail->mandate_saletype . ' in ' . $propertyDetail->suburb) }}
                                     </p>
+
 
 
 
