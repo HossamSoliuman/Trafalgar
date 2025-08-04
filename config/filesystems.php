@@ -38,15 +38,15 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
         'excelsheet_path' => [
-    'driver' => 'local',
-    'root' => storage_path('app/public/weeklyreport'),
-    'url' => env('APP_URL').'/storage',
-    'visibility' => 'public',
-],
+            'driver' => 'local',
+            'root' => storage_path('app/dailyreport'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

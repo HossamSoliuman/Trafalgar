@@ -104,7 +104,6 @@ class SyncApiPropertyImportController extends Controller
     // // Trafalgar Property Mangement
     public function trafalgarPropertyMangementPvtLtd()
     {
-
         $userName_property_mangement_pretoria = 'Trafalgar Property Management PTY LTD - Pretoria';
         $password_property_mangement_pretoria = 'd7b702b7-b56d-4ebb-938d-d3f2d3ca796c';
         $token_property_mangement_pretoria = 'Basic ' . base64_encode($userName_property_mangement_pretoria . ':' . $password_property_mangement_pretoria);
@@ -113,289 +112,150 @@ class SyncApiPropertyImportController extends Controller
     }
 
 
-
-
-
-
-
-
-
     public function importSyncPropertyData($token, $apiUserName)
     {
-
-        //  dd($token."----".$apiUserName);
-
         $apiURL = 'https://sync.entegral.net/api/listings';
-
-        $headers = [
-            'Authorization' => $token
-        ];
-
+        $headers = ['Authorization' => $token];
         $response = Http::withHeaders($headers)->get($apiURL);
-        $statusCode = $response->status();
         $responseBody = json_decode($response->getBody(), true);
-        // dd($responseBody);
+        $removedProperty = ['For Sale', 'Rental Monthly'];
 
-        // if ($statusCode === 200) {
-        //     $fileName = 'listings.json';
-        //     $jsonData = json_encode($responseBody);
+        if (empty($responseBody)) return;
 
-        //     return response($jsonData)
-        //         ->header('Content-Type', 'application/json')
-        //         ->header('Content-Disposition', 'attachment; filename="' . $fileName . '"');
-        // }
+        EntegralApiData::where('api_city_key', $apiUserName)->where('api_type_name', 'syncApi')->delete();
+        SearchReference::where('api_city_key', $apiUserName)->where('api_type_name', 'syncApi')->delete();
 
-        $removedProperty    = ['For Sale', 'Rental Monthly'];
+        foreach ($responseBody as $data) {
+            if (!isset($data['expiryDate'])) continue;
+            if (strtotime(date("Y/m/d H:i:s")) > strtotime($data['expiryDate'])) continue;
+            if (!in_array($data['propertyStatus'], $removedProperty)) continue;
+            $insert = new EntegralApiData;
+            $insert->is_property_new = 1;
+            $insert->api_city_key = $apiUserName;
+            $insert->api_type_name = "syncApi";
+            $insert->property_id = $data['clientPropertyID'];
+            $insert->mandate_saletype = $data['propertyStatus'] == "Rental Monthly" ? "for rent" : "for sale";
+            $insert->is_property_sold = $data['propertyStatus'] == "Sold" ? 1 : 0;
+            $insert->mandate_saletypeunit = $data['priceUnit'];
+            $insert->mandate_status = $data['propertyStatus'];
+            $insert->mandate_type = null;
+            $insert->mandate_startdate = date('Y-m-d', strtotime($data['listDate']));
+            $insert->mandate_enddate = date('Y-m-d', strtotime($data['expiryDate']));
+            $insert->price = $data['price'] ?? null;
+            $residentialArray = ['Apartment', 'Cluster', 'Cottage', 'Duet', 'Flat', 'Holiday Accommodation', 'House', 'Penthouse', 'Retirement Village', 'Townhouse', 'Vacant Land Residential'];
+            $commercialArray = ['Commercial', 'Game Farm Lodge', 'Guest House', 'Industrial', 'Industrial Land', 'Office', 'Restaurant', 'Retail', 'Shop', 'Vacant Land Commercial'];
+            $type = ucfirst(strtolower($data['propertyType']));
+            $insert->property_classification = in_array($type, $residentialArray) ? 'residential' : (in_array($type, $commercialArray) ? 'commercial' : null);
+            $insert->property_type = $data['propertyType'];
 
-        if (!empty($responseBody)) {
+            if (isset($data['photos'][0]['imgUrl'])) {
+                $insert->photo_thumbnail = $data['photos'][0]['imgUrl'];
+                $insert->news_featured_image = $data['photos'][0]['imgUrl'];
+            }
 
-            EntegralApiData::where('api_city_key', $apiUserName)->where('api_type_name', 'syncApi')->delete();
-            SearchReference::where('api_city_key', $apiUserName)->where('api_type_name', 'syncApi')->delete();
+            $insert->country = strtolower($data['country']);
+            $insert->province = strtolower($data['province']);
+            $insert->town = strtolower($data['town']);
+            $insert->suburb = strtolower($data['suburb']);
+            $insert->map_location_available = $data['showOnMap'];
+            $insert->street_number = ucfirst(strtolower($data['streetNumber']));
+            $insert->street_name = ucfirst(strtolower($data['streetName']));
+            $insert->unit_number = ucfirst(strtolower($data['unitNumber']));
+            $insert->complex_name = ucfirst(strtolower($data['complexName']));
+            $insert->property_name = ucfirst(strtolower(($data['complexName'] && $data['unitNumber']) ? $data['unitNumber'] . " " . $data['complexName'] : $data['streetNumber'] . " " . $data['streetName']));
 
-            for ($r = 0; $r < count($responseBody); $r++) {
-                if (!isset($responseBody[$r]['expiryDate'])) {
-                    continue;
+            if (!empty($data['contact'])) {
+                $insert->agent_id = $data['contact'][0]['clientAgentID'];
+                $insert->agent_name = $data['contact'][0]['fullName'];
+                $insert->agent_email = $data['contact'][0]['email'];
+                $insert->agent_phone = $data['contact'][0]['cell'];
+                $insert->agent_name_slug = strtolower(str_replace("--", "-", str_replace(" ", "-", $data['contact'][0]['fullName'])));
+            }
+
+            $insert->added = $data['timeStamp'];
+            $insert->updated = null;
+
+            if (isset($data['latlng']) && $data['latlng'] != "") {
+                [$lat, $lng] = explode(",", $data['latlng']);
+                if ($lat == 0 || $lng == 0) {
+                    $coords = $this->getPropertyLatLong($data['streetNumber'], $data['streetName'], $data['suburb'], $data['town'], $data['province'], $data['country']);
+                    $insert->location_lat = $coords['lat'];
+                    $insert->location_long = $coords['lng'];
+                } else {
+                    $insert->location_lat = $lat;
+                    $insert->location_long = $lng;
                 }
-                $getCurrentTime = date("Y/m/d H:i:s");
-                $getCurrentTimeValue = strtotime($getCurrentTime);
-                $getDataTime = strtotime($responseBody[$r]['expiryDate']);
-                // if ($getCurrentTimeValue > $getDataTime && $responseBody[$r]['clientPropertyID'] == 10322)
-                //     return  $responseBody[$r]['clientPropertyID'];
-                if ($getCurrentTimeValue <= $getDataTime) {
-                    if (in_array($responseBody[$r]['propertyStatus'], $removedProperty)) {
+            }
 
+            $insert->floor_size = $data['buildingSize'];
+            $insert->floor_size_unit = $data['buildingSizeType'];
+            $insert->land_size = $data['landSize'] ?? null;
+            $insert->land_size_unit = $data['landsizeType'];
+            $insert->pool = $data['pool'];
+            $insert->no_pets_allowed = $data['petsAllowed'];
+            $insert->garages = $data['garages'] ?? null;
+            $insert->covered_parking = $data['carports'];
+            $insert->open_parking = $data['openparking'];
+            $insert->bedrooms = $data['beds'] ?? null;
+            $insert->bathrooms = $data['baths'] ?? null;
+            $insert->furnished = $data['furnished'];
+            $insert->living_areas = $data['livingAreas'];
+            $insert->days_on_market = null;
+            $insert->days_to_expiry = null;
+            $insert->headline = $data['title'];
+            $insert->description = $data['description'];
+            $insert->rates_taxes = $data['ratesAndTaxes'];
+            $insert->rates_taxes_unit = null;
+            $insert->levy = $data['levy'];
+            $insert->levy_unit = null;
+            $insert->photos = !empty($data['photos']) ? count($data['photos']) : "0";
+            $insert->contacts = '';
+            $insert->news_featured_image = !empty($data['photos']) ? $data['photos'][0]['imgUrl'] : "";
+            $insert->separate_toilet = $data['propertyFeatures'];
+            $insert->additional_charges = $data['description'];
+            $insert->security_tag = $data['securityFeatures'];
+            $insert->staff_tag = $data['staffAccommodation'];
+            $insert->study_tag = $data['study'];
+            $insert->carpeted_tag = $data['propertyFeatures'];
+            $insert->video_url = $data['vtUrl'];
+            $insert->files = "";
+            $insert->links = "";
+            $insert->features = $data['propertyFeatures'];
+            $insert->save();
 
-                        //   $checkPropertyExist =   EntegralApiData::where('property_id',$responseBody[$r]['clientPropertyID'])->first();
-                        // if(!empty($checkPropertyExist)){
-                        //      $insertEntegralData =  EntegralApiData::find($checkPropertyExist->id);
-                        //       $insertEntegralData->is_property_new = 0 ;
-                        //       // variable for sending email alert of property 
-                        //       $checkifPropertyNew = 0;
-                        // }else{
-                        $insertEntegralData =  new EntegralApiData;
-                        $insertEntegralData->is_property_new = 1;
-                        // variable for sending email alert of property
-                        $checkifPropertyNew = 1;
-                        // }
+            $suburb = $data['suburb'];
+            $province = $data['province'];
+            $town = $data['suburb'];
 
-                        $insertEntegralData->api_city_key = $apiUserName;
-                        $insertEntegralData->api_type_name = "syncApi";
+            if (!SearchReference::where('search_name', $suburb)->exists()) {
+                SearchReference::create([
+                    'search_name' => $suburb,
+                    'search_type' => 'suburb',
+                    'api_city_key' => $apiUserName,
+                    'api_type_name' => 'syncApi'
+                ]);
+            }
 
-                        $insertEntegralData->property_id = $responseBody[$r]['clientPropertyID'];
+            if (!SearchReference::where('search_name', $province)->exists()) {
+                SearchReference::create([
+                    'search_name' => $province,
+                    'search_type' => 'province',
+                    'api_city_key' => $apiUserName,
+                    'api_type_name' => 'syncApi'
+                ]);
+            }
 
-
-
-
-                        if ($responseBody[$r]['propertyStatus'] == "For Sale") {
-                            $insertEntegralData->mandate_saletype = 'for sale';
-                        } else 
-            if ($responseBody[$r]['propertyStatus'] == "Rental Monthly") {
-                            $insertEntegralData->mandate_saletype = "for rent";
-                        } else if ($responseBody[$r]['propertyStatus'] == "Sold") {
-                            $insertEntegralData->mandate_saletype = "for sale";
-                            $insertEntegralData->is_property_sold = 1;
-                        }
-
-
-                        $insertEntegralData->mandate_saletypeunit = $responseBody[$r]['priceUnit'];
-                        $insertEntegralData->mandate_status = $responseBody[$r]['propertyStatus'];
-                        $insertEntegralData->mandate_type = NULL;
-                        $insertEntegralData->mandate_startdate = $responseBody[$r]['listDate'];
-                        $insertEntegralData->mandate_enddate = $responseBody[$r]['expiryDate'];
-                        if (!empty($responseBody[$r]['price'])) {
-                            $insertEntegralData->price = $responseBody[$r]['price'];
-                        }
-                        $residentialArray = ['Apartment', 'Cluster', 'Cottage', 'Duet', 'Flat', 'Holiday Accommodation', 'House', 'Penthouse', 'Retirement Village', 'Townhouse', 'Vacant Land Residential'];
-
-                        $commercialArray = ['Commercial', 'Game Farm Lodge', 'Guest House', 'Industrial', 'Industrial Land', 'Office', 'Restaurant', 'Retail', 'Shop', 'Vacant Land Commercial'];
-
-                        if (in_array(ucfirst(strtolower($responseBody[$r]['propertyType'])), $residentialArray)) {
-                            $insertEntegralData->property_classification = 'residential';
-                        } else if (in_array(ucfirst(strtolower($responseBody[$r]['propertyType'])), $commercialArray)) {
-                            $insertEntegralData->property_classification = 'commercial';
-                        }
-
-
-
-                        $insertEntegralData->property_type = $responseBody[$r]['propertyType'];
-                        if (isset($responseBody[$r]['photos'][0]['imgUrl'])) {
-                            $insertEntegralData->photo_thumbnail = $responseBody[$r]['photos'][0]['imgUrl'];
-                            $insertEntegralData->news_featured_image = $responseBody[$r]['photos'][0]['imgUrl'];
-                        }
-
-
-                        $insertEntegralData->country = strtolower($responseBody[$r]['country']);
-
-                        $insertEntegralData->province = strtolower($responseBody[$r]['province']);
-
-                        $insertEntegralData->town = strtolower($responseBody[$r]['town']);
-
-                        $insertEntegralData->suburb = strtolower($responseBody[$r]['suburb']);
-
-                        $insertEntegralData->map_location_available = $responseBody[$r]['showOnMap'];
-
-                        $insertEntegralData->street_number = ucfirst(strtolower($responseBody[$r]['streetNumber']));
-
-                        $insertEntegralData->street_name = ucfirst(strtolower($responseBody[$r]['streetName']));
-
-                        $insertEntegralData->unit_number = ucfirst(strtolower($responseBody[$r]['unitNumber']));
-
-                        $insertEntegralData->complex_name = ucfirst(strtolower($responseBody[$r]['complexName']));
-
-
-                        if ($responseBody[$r]['complexName'] != '' && $responseBody[$r]['unitNumber'] != "") {
-                            $propertyCustomTitle = $responseBody[$r]['unitNumber'] . " " . $responseBody[$r]['complexName'];
-                        } else {
-                            $propertyCustomTitle = $responseBody[$r]['streetNumber'] . " " . $responseBody[$r]['streetName'];
-                        }
-
-                        $insertEntegralData->property_name = ucfirst(strtolower($propertyCustomTitle));
-
-                        //$insertEntegralData->directions = $responseBody[$r]['directions'];
-
-
-                        if (!empty($responseBody[$r]['contact'])) {
-                            $insertEntegralData->agent_id =  $responseBody[$r]['contact'][0]['clientAgentID'];
-                            $insertEntegralData->agent_name = $responseBody[$r]['contact'][0]['fullName'];
-                            
-                            $insertEntegralData->agent_email = $responseBody[$r]['contact'][0]['email'];
-                            $insertEntegralData->agent_phone = $responseBody[$r]['contact'][0]['cell'];
-
-
-                            $agentSlug = str_replace(" ", "-", $responseBody[$r]['contact'][0]['fullName']);
-                            $agentSlug = str_replace("--", "-", $agentSlug);
-                            $insertEntegralData->agent_name_slug = strtolower($agentSlug);
-                        }
-
-
-                        $insertEntegralData->added = $responseBody[$r]['timeStamp'];
-                        $insertEntegralData->updated = NULL;
-
-                        if (isset($responseBody[$r]['latlng']) && ($responseBody[$r]['latlng'] != "")) {
-                            $latlng =   explode(",", $responseBody[$r]['latlng']);
-
-
-
-
-                            if ($latlng[0] == 0 || $latlng[1] == 0) {
-
-                                $latLngData = $this->getPropertyLatLong(
-                                    $responseBody[$r]['streetNumber'],
-                                    $responseBody[$r]['streetName'],
-                                    $responseBody[$r]['suburb'],
-                                    $responseBody[$r]['town'],
-                                    $responseBody[$r]['province'],
-                                    $responseBody[$r]['country']
-                                );
-
-                                $insertEntegralData->location_lat = $latLngData['lat'];
-                                $insertEntegralData->location_long = $latLngData['lng'];
-                            } else {
-                                $insertEntegralData->location_lat = $latlng[0];
-                                $insertEntegralData->location_long = $latlng[1];
-                            }
-                        }
-
-
-                        $insertEntegralData->floor_size = $responseBody[$r]['buildingSize'];
-                        $insertEntegralData->floor_size_unit = $responseBody[$r]['buildingSizeType'];
-                        if (!empty($responseBody[$r]['landSize'])) {
-                            $insertEntegralData->land_size = $responseBody[$r]['landSize'];
-                        }
-                        $insertEntegralData->land_size_unit = $responseBody[$r]['landsizeType'];
-                        $insertEntegralData->pool = $responseBody[$r]['pool'];
-                        $insertEntegralData->no_pets_allowed = $responseBody[$r]['petsAllowed'];
-                        if (!empty($responseBody[$r]['garages'])) {
-                            $insertEntegralData->garages = $responseBody[$r]['garages'];
-                        }
-
-                        $insertEntegralData->covered_parking = $responseBody[$r]['carports'];
-                        $insertEntegralData->open_parking = $responseBody[$r]['openparking'];
-                        if (!empty($responseBody[$r]['beds'])) {
-                            $insertEntegralData->bedrooms = $responseBody[$r]['beds'];
-                        }
-                        if (!empty($responseBody[$r]['baths'])) {
-                            $insertEntegralData->bathrooms = $responseBody[$r]['baths'];
-                        }
-                        $insertEntegralData->furnished = $responseBody[$r]['furnished'];
-                        $insertEntegralData->living_areas = $responseBody[$r]['livingAreas'];
-                        $insertEntegralData->days_on_market = NULL;
-                        $insertEntegralData->days_to_expiry = NULL;
-                        $insertEntegralData->headline = $responseBody[$r]['title'];
-                        $insertEntegralData->description = $responseBody[$r]['description'];
-                        $insertEntegralData->rates_taxes = $responseBody[$r]['ratesAndTaxes'];
-                        $insertEntegralData->rates_taxes_unit = NULL;
-                        $insertEntegralData->levy = $responseBody[$r]['levy'];
-                        $insertEntegralData->levy_unit = NULL;
-                        $insertEntegralData->photos = (!empty($responseBody[$r]['photos'])) ? count($responseBody[$r]['photos']) : "0";
-                        $insertEntegralData->contacts = '';
-
-
-                        $photoArrayFeatureImage =  $responseBody[$r]['photos'];
-                        $insertEntegralData->news_featured_image = (!empty($photoArrayFeatureImage)) ? $photoArrayFeatureImage[0]['imgUrl'] : "";
-
-
-                        $insertEntegralData->separate_toilet  = $responseBody[$r]['propertyFeatures'];
-                        $insertEntegralData->additional_charges = $responseBody[$r]['description'];
-                        $insertEntegralData->security_tag = $responseBody[$r]['securityFeatures'];
-                        $insertEntegralData->staff_tag = $responseBody[$r]['staffAccommodation'];
-                        $insertEntegralData->study_tag = $responseBody[$r]['study'];
-                        $insertEntegralData->carpeted_tag = $responseBody[$r]['propertyFeatures'];
-                        $insertEntegralData->video_url = $responseBody[$r]['vtUrl'];
-
-
-
-                        $insertEntegralData->files = "";
-                        $insertEntegralData->links = "";
-
-
-
-                        $insertEntegralData->features = $responseBody[$r]['propertyFeatures'];
-                        $insertEntegralData->save();
-
-                        $property_id =  $insertEntegralData->id;
-
-                        $photoArray =  $responseBody[$r]['photos'];
-
-
-                        $search_name_suburb = $responseBody[$r]['suburb'];
-                        $searchReference_suburb =  SearchReference::where('search_name', $search_name_suburb)->first();
-                        if (empty($searchReference_suburb)) {
-                            SearchReference::create([
-                                'search_name' => $search_name_suburb,
-                                'search_type' => 'suburb',
-                                'api_city_key' => $apiUserName,
-                                'api_type_name' => 'syncApi'
-
-                            ]);
-                        }
-
-                        $search_name_province = $responseBody[$r]['province'];
-                        $searchReference_province =  SearchReference::where('search_name', $search_name_province)->first();
-                        if (empty($searchReference_province)) {
-                            SearchReference::create([
-                                'search_name' => $search_name_province,
-                                'search_type' => 'province',
-                                'api_city_key' => $apiUserName,
-                                'api_type_name' => 'syncApi'
-                            ]);
-                        }
-
-                        $search_name_town = $responseBody[$r]['suburb'];
-                        $searchReference_town =  SearchReference::where('search_name', $search_name_town)->first();
-                        if (empty($searchReference_town)) {
-                            SearchReference::create([
-                                'search_name' => $search_name_town,
-                                'search_type' => 'town',
-                                'api_city_key' => $apiUserName,
-                                'api_type_name' => 'syncApi'
-                            ]);
-                        }
-                    }
-                }
+            if (!SearchReference::where('search_name', $town)->exists()) {
+                SearchReference::create([
+                    'search_name' => $town,
+                    'search_type' => 'town',
+                    'api_city_key' => $apiUserName,
+                    'api_type_name' => 'syncApi'
+                ]);
             }
         }
     }
+
 
 
     public function getPropertyLatLong($street_number, $street_name, $suburb, $town, $province, $country)

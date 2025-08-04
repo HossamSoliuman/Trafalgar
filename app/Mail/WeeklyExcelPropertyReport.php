@@ -29,7 +29,9 @@ class WeeklyExcelPropertyReport extends Mailable
      */
     public function build()
     {
-        
-        return $this->view('email.weeklyPropertyReport')->attach($this->reportPath);
+
+        return $this->subject('DAILY EXCEL PROPRTY REPORT')
+            ->view('email.weeklyPropertyReport')
+            ->attach($this->reportPath);
     }
 }
