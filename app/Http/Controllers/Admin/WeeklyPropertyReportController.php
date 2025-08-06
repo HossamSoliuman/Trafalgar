@@ -28,6 +28,7 @@ class WeeklyPropertyReportController extends Controller
                 'umayyas@trafalgar.co.za',
                 'hossamsoliuman@gmail.com'
             ];
+            //
             $cc = [];
             Mail::to($to)
                 ->cc($cc)
