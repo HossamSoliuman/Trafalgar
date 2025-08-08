@@ -198,8 +198,8 @@ Route::group(['prefix' => 'admin',  'middleware' => 'admin'], function () {
     Route::get('/propertysolution/notDisplay/{id}', [PropertySolutionController::class, 'notDisplay'])->name('admin.propertysolution.not-display');
 
     Route::resource('job-management', JobManagementController::class, ['as' => 'admin']);
-    Route::get('/job-order',[JobManagementController::class,'order'])->name('admin.job.order');
-    Route::post('job-update-order',[JobManagementController::class,'updateOrder'])->name('admin.job.update.order');
+    Route::get('/job-order', [JobManagementController::class, 'order'])->name('admin.job.order');
+    Route::post('job-update-order', [JobManagementController::class, 'updateOrder'])->name('admin.job.update.order');
     Route::get('job-management/display/{id}', [JobManagementController::class, 'display'])->name('admin.job-management.display');
     Route::get('job-management/notDisplay/{id}', [JobManagementController::class, 'notDisplay'])->name('admin.job-management.not-display');
 
@@ -316,7 +316,11 @@ Route::get('/privacy-policy', [PageController::class, 'index'])->name('privacy-p
 // create route for ManageController controller
 Route::get('property-management/sectional-title-and-hoa-management', [ManageController::class, 'sectionalTitleAndHoa'])->name('property-management.sectional-title-and-hoa-management');
 Route::get('property-management/commercial-property-management', [ManageController::class, 'commercialPropertyManagement'])->name('property-management.commercial-property-management');
-Route::get('property-management/sectional-title-and-hoa-management/developer-services', [ManageController::class, 'developerServices'])->name('property-management.sectional-title-and-hoa-management.developer-services');
+Route::get('property-management/sectional-title-and-hoa-management/property-developer-services', [ManageController::class, 'developerServices'])->name('property-management.sectional-title-and-hoa-management.developer-services');
+Route::redirect(
+    'property-management/sectional-title-and-hoa-management/developer-services',
+    '/property-management/sectional-title-and-hoa-management/property-developer-services'
+);
 Route::get('property-management/commercial-property-management/commercial-brokering-services', [ManageController::class, 'commercialBrokeringServices'])->name('property-management.commercial-property-management.commercial-brokering-services');
 Route::get('property-management/commercial-property-management/commercial-landlord-services', [ManageController::class, 'commercialLandlordServices'])->name('property-management.commercial-property-management.commercial-landlord-services');
 Route::get('property-management/executive-managing-agent', [ManageController::class, 'executiveManagingAgent'])->name('property-management.executive-managing-agent');
