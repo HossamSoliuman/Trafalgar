@@ -13,8 +13,9 @@
     <div class="breadcrumbs">
         <div class="container">
             <ul>
-                <li><a href="#">Manage</a></li>
-                <li><a href="#">Commercial Property Management</a></li>
+                <li><a href="{{ route('property-management') }}">Property Management</a></li>
+                <li><a href="{{ route('property-management.commercial-property-management') }}">Commercial Property
+                        Management</a></li>
                 <li><a href="#">Commercial Landlord Services</a></li>
             </ul>
         </div>
