@@ -26,15 +26,21 @@ class MainController extends Controller
             ['Amalinda', 'Beacon Bay', 'Gonubie', 'Kabega Park', 'Lorraine', 'Quigney', 'Southernwood', 'Vincent']
         ];
 
+        $provinces = [
+            'Gauteng',
+            'Kwazulu Natal',
+            'Eastern Cape'
+        ];
+
         $getDistinctProvinces = [];
-        foreach ($suburbGroups as $group) {
-            $getDistinctProvinces[] = EntegralApiData::select('suburb', 'town', 'province')
-                ->whereIn('suburb', $group)
+
+        foreach ($provinces as $province) {
+            $getDistinctProvinces[$province] = EntegralApiData::select('suburb', 'town', 'province')
+                ->where('province', $province)
                 ->where('mandate_saletype', $tab)
                 ->where('property_classification', 'residential')
                 ->orderBy('suburb', 'ASC')
-                ->inRandomOrder()
-                ->groupBy('suburb')
+                ->groupBy('suburb', 'town', 'province')
                 ->take(8)
                 ->get();
         }
@@ -70,10 +76,10 @@ class MainController extends Controller
             ->groupBy('property_type')
             ->get();
 
-        $getNewsApi =[];
+        $getNewsApi = [];
         //  $this->getNewsApi();
         $getSearchTaggerData = $this->getSearchTaggerData();
-      
+
         $searchResultCookie = $this->searchResultCookie('to-rent');
         $searchResultCookieForSale = $this->searchResultCookie('for-sale');
 
@@ -103,7 +109,7 @@ class MainController extends Controller
         $ddd = json_decode($res, true);
         return  $ddd = (object)$ddd;
     }
-    
+
     // public function getSearchTaggerData()
     // {
     //     $getList =  EntegralApiData::select('province')->where('province', '!=', 'Unalloc')->distinct()->inRandomOrder()->get();
