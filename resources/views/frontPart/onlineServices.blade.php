@@ -60,8 +60,8 @@
                             <div class="eachimg">
                                 <img src="{{ asset('front/images/portal.svg') }}" alt="portal">
                             </div>
-                            <h5>Property Portal</h5>
-                            <a href="#property_portal" id="fportal" class="theme-btn">Read More</a>
+                            <h5>Web App</h5>
+                            <a href="#web_app" id="web_app" class="theme-btn">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                         <h4><a href="javascript:void(0)">ONLINE ACCOUNTS</a></h4>
                         <div class="more-content" >
                             <p>As a Trafalgar client, you are very welcome to use our online services to update your property management and account information. Simply log in using your pin and password, and gain access to a secure world of online property management information.</p>
-                             <a class="green_button" href="http://webgui.unibase.co.za/scripts/eri.dll?pagename=sectitlelandtrarev1revMW1">Click to login to Property Portal</a>
+                             <a class="green_button" href="https://trafalgar-app.unibase.solutions/">Click to login to Web App</a>
                         </div>
                     </div>
                     <div class="each_manage_section" id="online_application">
@@ -126,11 +126,11 @@
                              <a class="green_button" href="{{ route('report-maintenance-issues') }}">Click to view the Maintenance Reporting form</a>
                         </div>
                     </div>
-                    <div class="each_manage_section" id="property_portal">
-                        <h4><a href="javascript:void(0)">PROPERTY PORTAL</a></h4>
+                    <div class="each_manage_section" id="web_app">
+                        <h4><a href="javascript:void(0)">Web App</a></h4>
                         <div class="more-content" >
-                            <p>In the Property Portals you will have access to a wealth of information about your property; rules, financials, contractors' details, plans, a bulletin board and much more. We hope that the direct, online and real-time access adds value.</p>
-                             <a class="green_button" href="http://webgui.unibase.co.za/scripts/eri.dll?pagename=sectitlelandtrarev1revMW1">Click to login to Property Portal</a>
+                            <p>In the Web App you will have access to a wealth of information about your property; rules, financials, contractors' details, plans, a bulletin board and much more. We hope that the direct, online and real-time access adds value.</p>
+                             <a class="green_button" href=" https://trafalgar-app.unibase.solutions/">Click to login to Web App</a>
                         </div>
                     </div>
                 </div>
