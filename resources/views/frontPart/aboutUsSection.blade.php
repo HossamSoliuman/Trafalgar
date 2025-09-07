@@ -8,20 +8,20 @@
         </a>
     </div>
     <div class="container-fluid">
-        <div class="row m-0">
-            <div class="col-lg-6 d-flex p-0">
+        <div class="row m-0 flex-column flex-lg-row">
+            <div class="col-lg-6 d-flex p-0 mb-3 mb-lg-0">
                 <div id="youtube-video-container" class="youtube-video-container w-100 h-100">
                     <div class="video-placeholder d-flex align-items-center justify-content-center w-100 h-100"
-                         style="background-image: url('{{ asset('front/images/vid-poster.webp') }}'); background-size: cover; background-position: center; min-height: 100%;">
+                         style="background-image: url('{{ asset('front/images/vid-poster.webp') }}'); background-size: cover; background-position: center; min-height: 220px;">
                         <button class="load-video-btn"
-                                style="background: rgba(0,0,0,0.7); color: white; border: none; border-radius: 50%; width: 80px; height: 80px; font-size: 18px;">
+                                style="background: rgba(0,0,0,0.7); color: white; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 16px;">
                             ▶
                         </button>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 d-flex flex-column justify-content-center">
-                <div class="about-section-content pl-3">
+                <div class="about-section-content pl-0 pl-lg-3 text-center text-lg-start">
                     <div class="heading">
                         <h2>About us</h2>
                     </div>
