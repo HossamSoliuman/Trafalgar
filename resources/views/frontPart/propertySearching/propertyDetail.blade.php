@@ -340,19 +340,9 @@
                         <div class="property_first_section property_second_section">
                             <h4>Property Detail</h4>
                             <h6><span>Date of Availability:</span>
+    {{ !empty($propertyData?->mandate_startdate) ? \Carbon\Carbon::parse($propertyData->mandate_startdate)->format('d-m-Y') : 'Not available' }}
+</h6>
 
-                                <?php
-                         if($townName->api_type_name == "baseEntegralApi"){     ?>
-                                {{ isset($propertyData) && $propertyData->occupation_date != '' ? str_replace('/', '-', $propertyData->occupation_date) : 'Not avaliable' }}
-                                <?php }else{ ?>
-                                {{ isset($propertyData) && $propertyData->listDate != '' ? str_replace('/', '-', $propertyData->listDate) : 'Not avaliable' }}
-                                <?php     }  ?>
-
-
-
-
-
-                            </h6>
                             <table class="table table-striped table-borderless">
                                 <tbody>
                                     <tr>

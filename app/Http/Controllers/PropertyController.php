@@ -274,9 +274,7 @@ class PropertyController extends Controller
                 return $photo;
             });
         }
-
         $checkPropertyFavourite = (object)$checkPropertyFavourite;
-
         return view('frontPart.propertySearching.propertyDetail', compact(
             'setting',
             'propertyData',
