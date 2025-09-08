@@ -137,8 +137,7 @@
 
                         <h3>Expert Claims Management and Support</h3>
 
-                        <p>At Trafalgar, we understand that dealing with <a
-                                href="https://trafalgar.co.za/property-insurance#claims"><b>insurance claims</b></a> can be
+                        <p>At Trafalgar, we understand that dealing with insurance claims can be
                             stressful and
                             time-consuming. That’s why we provide a dedicated claims management service to assist shareblock
                             companies in navigating the claims process. Our experienced team works closely with clients to

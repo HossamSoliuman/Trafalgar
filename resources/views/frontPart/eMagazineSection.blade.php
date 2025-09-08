@@ -45,7 +45,7 @@
                               loading="lazy">
                       </div>
                       <div class="magazine-content">
-                          <h4><a href="{{ route('sell') }}#e-magazine">Free Evaluation</a></h4>
+                          <h4><a href="{{ route('sell') }}">Free Evaluation</a></h4>
                           <p>Request a free property Evaluation from one of our real
                               estate agents to find out what your property is worth.</p>
                       </div>

@@ -77,8 +77,8 @@
                             solutions that go beyond basic legislative requirements. TFS understands that each body
                             corporate has unique needs based on factors such as the location, size, and profile of the
                             property. As such, the company offers customizable options to enhance standard insurance
-                            coverage, including <a href="https://trafalgar.co.za/property-insurance#trafex"><b>excess
-                                    waivers</b></a> and shortfall cover.
+                            coverage, including excess
+                                    waivers and shortfall cover.
                             Excess waivers can be particularly valuable in reducing the financial burden on a body corporate
                             or owner when a claim is made. Similarly, shortfall cover can protect against the difference
                             between the insured value and the actual replacement cost, which can be a critical safeguard in
@@ -87,8 +87,7 @@
                             peace of mind for property owners and managers alike.
                         </p>
                         <h3> Professional Claims Management and Value-Added Services</h3>
-                        <p>Effective <a href="https://trafalgar.co.za/property-insurance#claims"><b>claims
-                                    management</b></a> is a crucial aspect of any insurance offering, and TFS prides itself
+                        <p>Effective claims management is a crucial aspect of any insurance offering, and TFS prides itself
                             on providing a fast, efficient, and convenient claims administration process. This is made
                             possible through the company's professional staff and specialist infrastructure, which are
                             dedicated to handling claims promptly and fairly. By streamlining the claims process, TFS helps

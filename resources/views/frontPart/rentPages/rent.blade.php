@@ -184,7 +184,7 @@
                         <div class="more-content" >
                             <p>Should you wish to apply for a residential property to rent, please download and complete the relevant application form below and return to our nearest office using the contact details provided on the branch locator page.</p>
                              <span class="read-more">
-                                <a href="{{ route('online-services').'#online_application' }}">Read More</a>
+                                <a href="{{ route('online-services') }}">Read More</a>
                             </span>
                         </div>
                     </div>
