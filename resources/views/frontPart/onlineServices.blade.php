@@ -44,13 +44,6 @@
                         </div>
                         <div class="each-property-solution">
                             <div class="eachimg">
-                                <img src="{{ asset('front/images/registration.svg') }}" alt="registration">
-                            </div>
-                            <h5>Registration Certificates</h5>
-                            <a href="#reg_certificate" id="fcertificate" class="theme-btn">Read More</a>
-                        </div>
-                        <div class="each-property-solution">
-                            <div class="eachimg">
                                 <img src="{{ asset('front/images/maintenance.svg') }}" alt="maintenance">
                             </div>
                             <h5>Report Maintenance Issues</h5>
@@ -94,28 +87,6 @@
                                 </ul>
                                 <p>Trafalgar Property Management was proud to introduce the first automated Online Application in June 2011. As a Group we are active in promoting cutting edge technology to deliver a world class product and service to our clients.</p>
                                 <p>Utilising the online applications will fast track the application process together with outlining the necessary supporting information which is necessary for compiling a meaningful quotation.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="each_manage_section" id="reg_certificate">
-                        <h4><a href="javascript:void(0)">REGISTRATION CERTIFICATES</a></h4>
-                        <div class="more-content" >
-                            <p>Registration certificates for Trafalgar Property Management (Pty) Ltd</p>
-                            <ul class="pdfs">
-                                <li><a href="#">Estate Agency Affairs Board (EAAB) Certificate</a></li>
-                                <li><a href="#">National Association of Managing Agents (NAMA) Certificate</a></li>
-                                <li><a href="#">Council for Debt Collectors</a></li>
-                                <li><a href="#">Professional Indemnity Cover</a></li>
-                                <li><a href="#">South African Property Owners Association (SAPOA) Certificate</a></li>
-                                <li><a href="#">Information Officer Certificate</a></li>
-                            </ul>
-                             <div class="more">
-                                <p>Registration certificates for Trafalgar Financial Services (Pty) Ltd</p>
-                                <ul class="pdfs">
-                                    <li><a href="#">Financial Services Board</a></li>
-                                    <li><a href="#">Registered Credit Provider</a></li>
-                                    <li><a href="#">FIA Membership Certificate</a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>

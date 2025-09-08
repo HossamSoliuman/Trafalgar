@@ -300,35 +300,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="guldenland_sidebar">
-                    <div class="sidelist">
-                        <h4>Registration certificates for Trafalgar Financial Services (Pty) Ltd</h4>
-                        <ul>
-                            <li><a href="#">Financial Services Board</a></li>
-                            <li><a href="#">Registered Credit Provider</a></li>
-                            <li><a href="#">FIA Membership Certificate</a></li>
-                        </ul>
-                    </div>
-                    <div class="sidelist">
-                        <h4>Registration Certificates For Trafalgar Property Management (Pty) Ltd</h4>
-                        <ul>
-                            <li><a target="_blank"
-                                    href="{{ asset('storage/websitepdf/Trafalgar Property Management PPRA Registration Certificate.pdf') }}">Property
-                                    Practitioners Regulatory Authority (PPRA) Certificate
-                                </a></li>
-                            <!--<li><a target="_blank" href="asset('storage/websitepdf/Trafalgar-Property-Management-NAMA-Certificate-2022.pdf')">National Association of Managing Agents (NAMA) Certificate</a></li>-->
-                            <!--<li><a target="_blank" href="asset('storage/websitepdf/Trafalgar Council for Debt Collectors Certificate 2023.pdf')">Council for Debt Collectors</a></li>-->
-                            <!--<li><a target="_blank" href="asset('storage/websitepdf/Trafalgar-Professional-Indemnity-Cover-Certificate-2022.pdf')">Professional Indemnity Cover</a></li>-->
-                            <!--<li><a target="_blank" href="asset('storage/websitepdf/Trafalgar-SAPOA-2022-Certificate.pdf')">South African Property Owners Association (SAPOA) Certificate</a></li>-->
-                            <!--<li><a target="_blank" href="asset('storage/websitepdf/Trafalgar Property Management_BEE Certificate.pdf')">BEE Certificate</a></li>-->
-
-                        </ul>
-                    </div>
-
-                </div>
-
             </div>
-
             <div class="clients_logo">
                 <img class="img-fluid" src="{{ asset('front/images/logo-hollard.png') }}" alt="logo-hollard" />
                 <img class="img-fluid" src="{{ asset('front/images/logo-santam.png') }}" alt="logo-santam" />
