@@ -17,3 +17,4 @@ yarn-error.log
 .htaccess
 /public
 server.php
+repositories/
