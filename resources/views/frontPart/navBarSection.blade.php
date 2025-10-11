@@ -37,6 +37,7 @@
                             <a href="{{ route('online-services') }}" class="p-2 pl-0">Online services</a>
                             <!--<a target="_blank" href="https://trafalgar.estatemate.co.za/login" class="p-2 pl-0">Property app</a>-->
                             <a target="_blank" href="https://trafalgar-app.unibase.solutions/" class="p-2 pl-0">Web App</a>
+                            <a target="_blank" href="http://webgui.unibase.co.za/scripts/eri.dll?pagename=sectitlelandtrarev1revMW1" class="p-2 pl-0">Property Portal</a>
                         </div>
                     </div>
                 </div>
@@ -128,6 +129,7 @@
                                     <li class="visibleinmobileonly"><a href="{{ url('/jobs') }}" class="nav-link">Careers</a></li>
                                     <li class="visibleinmobileonly"><a href="{{ route('online-services') }}" class="nav-link">Online services</a></li>
                                     <li class="visibleinmobileonly"><a target="_blank" href="https://trafalgar-app.unibase.solutions/" class="nav-link">Web App</a></li>
+                                    <li class="visibleinmobileonly"><a target="_blank" href="http://webgui.unibase.co.za/scripts/eri.dll?pagename=sectitlelandtrarev1revMW1" class="nav-link">Property Portal</a></li>
                             
                           
                             
