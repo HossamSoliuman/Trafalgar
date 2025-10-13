@@ -293,7 +293,7 @@
                                                     <span class="icon-phone contact-icons"></span>
                                                     <p>
                                                         <span>Afterhours emergencies:</span>
-                                                        <span><a href="tel:061 336 9581">061 336 9581</a></span>
+                                                        <span><a href="tel:061 336 9581">071 178 6741</a></span>
                                                     </p>
                                                 </div>
                                                 <div class="each_address">
@@ -354,7 +354,7 @@
                                                     <span class="icon-phone contact-icons"></span>
                                                     <p>
                                                         <span>Afterhours emergencies:</span>
-                                                        <span><a href="tel:061 336 9581">061 336 9581</a></span>
+                                                        <span><a href="tel:061 336 9581">071 178 6741</a></span>
                                                     </p>
                                                 </div>
                                                 <div class="each_address">
