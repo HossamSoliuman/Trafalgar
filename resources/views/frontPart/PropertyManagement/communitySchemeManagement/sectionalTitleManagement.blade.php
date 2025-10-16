@@ -24,192 +24,155 @@
 
     <section class="guldenland_section manage_section mt-5">
         <div class="container">
-            <div class="heading h1_tag mb-4">
-                <h1>Sectional Title Management</h1>
-                <div class="manage-paragraph text-justify">
-                    At Trafalgar, we specialize in sectional title management, offering comprehensive services to ensure the
-                    smooth operations of sectional title schemes across South Africa. Managing sectional title properties
-                    can be complex, involving financial administration, legal compliance, property maintenance, and resident
-                    relations. With over 50 years of experience, <a
-                        href="{{ route('property-management.property-management-company') }}"><b>Trafalgar</b></a> has
-                    established itself as a leader in sectional title management, providing professional, transparent, and
-                    efficient solutions that cater to the unique needs of these types of community scheme properties.
-                </div>
-            </div>
+            <h4>Sectional Title Management</h4>
+            <p>Trafalgar’s core business is the management of sectional title schemes and homeowners associations across
+                South Africa. With over 50 years of experience, professional systems, and highly trained staff, <a
+                    href="{{ route('property-management.property-management-company') }}" target="_blank"><b>Trafalgar</b></a>
+                delivers a comprehensive, transparent and tailored sectional title
+                management service designed to protect property value, promote harmonious living, and ensure full legal and
+                financial compliance.</p>
+            <p>As a fully registered member of the Property Practitioners Regulatory Authority (PPRA), National Association
+                of Managing Agents (NAMA) and Council for Debt Collectors, Trafalgar operates to the highest professional
+                and ethical standards.</p>
+            <p><a href="https://www.trafalgar.co.za/storage/brochure/Sectional-Title-and-HOA-Property-Managment-EV.pdf"
+                    target="_blank">(Click here to view Trafalgar’s Sectional Title and HOA Property Management
+                    Brochure.)</a></p>
+
             <div class="guldenland_products">
                 <div class="guldenland_products_listing manage_section_listing">
                     <div class="each_manage_section">
                         <div>
-                            <h4>What is Sectional Title Management?</h4>
-                            <p>Sectional title management refers to the administration and management of sectional title
-                                schemes, which typically include properties such as townhouses, apartment complexes, and
-                                other multi-unit developments. In a sectional title scheme, individual owners hold title to
-                                specific units, while common property areas such as gardens, pools, parking lots, and
-                                pathways are jointly owned by all section owners. These common areas require regular
-                                management and upkeep, which is where sectional title management comes in.</p>
-                            <p>A well-managed sectional title property not only ensures the safety and comfort of its
-                                residents but also maintains the value of the property as a whole. However, without the
-                                right expertise, managing these schemes can be challenging. Trafalgar offers tailored
-                                sectional title management services to help ensure the successful day-to-day running of your
-                                property, while also safeguarding its long-term viability.</p>
-
-                            <h4> Key Responsibilities in Sectional Title Management</h4>
-                            <p>
-                                Managing a sectional title property involves a range of tasks, each of which is essential
-                                for
-                                the smooth operation and upkeep of the property. Trafalgar’s sectional title management
-                                services
-                                cover all aspects of these responsibilities, including:
+                            <h4>What Is Sectional Title Management?</h4>
+                            <p>A sectional title scheme refers to a property where individual owners hold title to specific
+                                units (such as apartments or townhouses) while sharing ownership of common areas like
+                                gardens, driveways, and recreational facilities. Managing these shared spaces requires
+                                professional coordination, financial control, and compliance with legislation such as the
+                                Sectional Titles Schemes Management Act and the Community Schemes Ombud Service (CSOS) Act.
                             </p>
+                            <p><a href="{{ route('property-management') }}" target="_blank"><b>Trafalgar’s
+                                        sectional title management services</b></a> ensure the smooth daily operation,
+                                long-term sustainability, and financial integrity of these schemes — allowing trustees and
+                                owners to focus on community living while Trafalgar handles the rest.</p>
 
-                            <h5> 1. Financial Management and Administration
+                            <h4>Comprehensive Sectional Title Management Services</h4>
 
-                            </h5>
-                            <p>
-                                One of the most critical aspects of sectional title management is the financial
-                                administration of the scheme. This includes collecting levies, preparing budgets, managing
-                                expenses, and maintaining accurate financial records. Trafalgar’s expert team handles all
-                                financial matters, ensuring that the scheme remains financially stable and that funds are
-                                allocated effectively and approved expenses paid time efficiently.
-                                We prepare comprehensive financial statements and reports for the body corporate, enabling
-                                trustees and owners to make informed decisions about the property’s finances. Trafalgar also
-                                assists with levy collections, debt recovery, and the preparation of annual financial
-                                budgets, helping to ensure the long-term financial health of the scheme.
-                            </p>
-                            <h5>
-                                2. Maintenance of Common Areas
-                            </h5>
-                            <p>
-                                Regular maintenance of common property areas is essential to preserving the value,
-                                aesthetics and appeal of sectional title properties. Trafalgar’s sectional title management
-                                services include the planning and execution of maintenance tasks, such as landscaping,
-                                repairs, and cleaning. We work with trusted contractors and service providers to ensure that
-                                maintenance is carried out to a high standard and that any issues are addressed promptly.
-                                Additionally, Trafalgar offers preventive maintenance programs that identify potential
-                                issues before they become major problems, helping to avoid costly repairs down the line. By
-                                maintaining the common areas, we help enhance the overall living experience for residents
-                                while protecting the property’s value.
-                            </p>
-                            <h5>
+                            <h5>1. Dedicated Portfolio Management Team</h5>
+                            <p>Each property managed by Trafalgar is assigned a dedicated sectional title portfolio manager
+                                — your single point of contact. The manager is supported by a portfolio administrator, debt
+                                collector and accountant, ensuring that every aspect of your scheme is expertly handled. All
+                                team members receive ongoing community scheme management training, guaranteeing up-to-date
+                                knowledge and compliance.</p>
 
-                                3. Legal and Compliance Management
-                            </h5>
-                            <p>
+                            <h5>2. Financial Management and Reporting</h5>
+                            <p>Effective financial management is at the heart of Trafalgar’s service. We provide:</p>
+                            <p>• Detailed monthly management reports, including income statements, levy rolls, variance
+                                reports, and credit control summaries<br>
+                                • Annual budgets, audit file preparation, and performance-to-budget reviews<br>
+                                • Levy roll packs issued on the 1st working day of each month and income statements by the
+                                15th<br>
+                                • Multiple payment channels, including debit order, EFT, and branch deposit options<br>
+                                • Real-time access to levy balances and financial reports via the <a
+                                    href="https://trafalgar-app.unibase.solutions/" target="_blank"><b>Property
+                                        Portal</b></a></p>
+                            <p>Trafalgar’s systems ensure complete transparency and time-efficient auditing for all bodies
+                                corporate.</p>
 
-                                Sectional title schemes are governed by complex legal frameworks, including the Sectional
-                                Titles Act, the Community Schemes Ombud Service (CSOS) Act, and other related legislation.
-                                Trafalgar’s sectional title management team ensures that your scheme remains fully compliant
-                                with all relevant laws and regulations.
-                                Our services include the preparation and submission of annual returns, ensuring compliance
-                                with health and safety standards, and advising trustees on legal matters that may affect the
-                                property. Trafalgar also assists with the resolution of disputes and conflicts, ensuring
-                                that the rights and obligations of all owners are respected and upheld.
-                            </p>
-                            <h5>
+                            <h5>3. Billing, Collections and Credit Control</h5>
+                            <p>Trafalgar manages the full billing process, including:</p>
+                            <p>• Monthly levy statements distributed via email or post<br>
+                                • Collection of levies and utilities through debit orders or electronic banking<br>
+                                • Billing of interest on arrears and liaison with attorneys for escalated collections<br>
+                                • Debt collection conducted under the Debt Collectors Act, allowing regulated fees to be
+                                charged directly to defaulting owners<br>
+                                • Levy clearance certificates and meter reading coordination</p>
+                            <p>Being a registered Debt Collector also allows Trafalgar to blacklist chronic defaulters,
+                                protecting the scheme’s financial stability.</p>
 
-                                4. Facilitating Meetings and Communication
-                            </h5>
-                            <p>
+                            <h5>4. Disbursements and Payments</h5>
+                            <p>• Payment of approved creditors and municipal accounts<br>
+                                • Dual-trustee electronic approvals before any payment is released<br>
+                                • Instant SMS and email notifications to trustees for all disbursements<br>
+                                • Netcash verification to confirm creditor details before payment<br>
+                                • Maintenance of electronic voucher files for full audit trails</p>
 
-                                Communication between trustees, owners, and residents is essential for the smooth running of
-                                a sectional title scheme. Trafalgar’s sectional title management team facilitates open and
-                                transparent communication, ensuring that all stakeholders are kept informed of important
-                                developments and decisions.
-                                We assist with the organization and facilitation of annual general meetings (AGMs), special
-                                general meetings, and trustee meetings. Trafalgar provides support in preparing meeting
-                                agendas, distributing notices, and recording minutes, ensuring that meetings are conducted
-                                efficiently and in compliance with the relevant legislation.
-                            </p>
-                            <h5>
+                            <h5>5. Maintenance Administration</h5>
+                            <p>A dedicated <a href="{{ route('property-management.caretaker-services') }}"
+                                    target="_blank"><b>maintenance administrator</b></a> coordinates quotes, bookings, and
+                                contractor approvals. Trafalgar works with vetted maintenance partners whose workmanship,
+                                insurance, and compliance are verified. Our preventive maintenance programs ensure that
+                                potential issues are identified before they become major expenses, preserving property value
+                                and safety.</p>
 
-                                5. Dispute Resolution and Conflict Management
-                            </h5>
-                            <p>
+                            <h5>6. Insurance and Property Financial Services</h5>
+                            <p>Trafalgar provides:<br>
+                                • <a href="{{ route('property-insurance') }}" target="_blank"><b>Insurance broking
+                                        services</b></a> to secure comprehensive cover at competitive rates<br>
+                                • Claims administration and disbursement<br>
+                                • Annual claims history reporting<br>
+                                • <a href="{{ route('property-finance') }}" target="_blank"><b>Refurbishment
+                                        loans</b></a> and levy factoring to assist with cash-flow management</p>
 
-                                In any community living arrangement, disputes between owners or residents may arise. As part
-                                of our sectional title management services, Trafalgar assists the trustees in mediating and
-                                resolving disputes to ensure that conflicts are addressed professionally and in line with
-                                the rules of the scheme. Where internal remedies fail, disputes should be escalated to CSOS
-                                for a binding external adjudication.
-                                Our experienced team works closely with trustees and owners to identify solutions that
-                                maintain harmony within the community and protect the interests of all stakeholders.
-                                Trafalgar also assists with submitting disputes to the Community Schemes Ombud Service
-                                (CSOS) if necessary, ensuring that any legal processes are handled efficiently.
-                            </p>
-                            <h5>
+                            <h5>7. Legal and Compliance Management</h5>
+                            <p>Trafalgar ensures that every scheme remains compliant with all relevant legislation. Services
+                                include:<br>
+                                • Maintaining statutory records (plans, registers, books of account, minutes)<br>
+                                • CSOS and SARS returns<br>
+                                • Advisory services on legislative changes and governance issues<br>
+                                • Assistance with conduct rules, dispute resolution, and mediation<br>
+                                • Coordination with attorneys for rule updates or legal opinions</p>
 
-                                6. Security and Safety Management
-                            </h5>
-                            <p>
+                            <h5>8. Meeting Attendance and Secretarial Support</h5>
+                            <p>We assist trustees with the smooth running of meetings through:<br>
+                                • Attendance at four trustee meetings per year and the Annual General Meeting (AGM)<br>
+                                • Preparation and distribution of notices, agendas, and minutes<br>
+                                • Support for Special General Meetings and owner communications</p>
 
-                                The safety and security of residents are top priorities in any sectional title scheme.
-                                Trafalgar’s sectional title management services include implementing and overseeing security
-                                measures such as access control, surveillance systems, and on-site security personnel. We
-                                also ensure that the property complies with all health and safety regulations, providing
-                                peace of mind for owners and residents alike.
-                                Our teams works closely with security providers and local authorities to address any safety
-                                concerns and implement best practices for ensuring the safety of the community.
-                                Why Choose Trafalgar for Sectional Title Management?
-                                Choosing Trafalgar as your sectional title management partner offers several key advantages:
-                            </p>
-                            <h5>
+                            <h5>9. Personnel and Payroll Management</h5>
+                            <p>Trafalgar manages employment administration for scheme staff, including:<br>
+                                • Salary and wage payments<br>
+                                • UIF and PAYE submissions<br>
+                                • Payslips, leave records and annual bonus tracking<br>
+                                • Labour law advisory support</p>
 
-                                1. Experienced Professionals
-                            </h5>
-                            <p>
+                            <h5>10. Technology and Property Portal</h5>
+                            <p>Trafalgar uses real-time property management software integrated with an online Property
+                                Portal, providing trustees and owners with 24/7 access to:<br>
+                                • Financial reports and levy accounts<br>
+                                • Rules, plans, and meeting minutes<br>
+                                • Maintenance updates and communication channels</p>
+                            <p>All documentation is stored securely through an advanced document management and workflow
+                                system for fast, paperless processing.</p>
 
-                                With over five decades of experience, Trafalgar has developed a deep understanding of the
-                                complexities involved in managing sectional title schemes across South Africa. Our team of
-                                skilled professionals brings a wealth of knowledge and expertise to the table, ensuring that
-                                all aspects of your property are managed efficiently and effectively.
-                            </p>
-                            <h5>
+                            <h5>11. Take-On Assessment (“Health Check”)</h5>
+                            <p>When Trafalgar takes over a complex, a specialist take-on team performs a full audit to
+                                ensure a seamless transition and legal compliance. This includes:<br>
+                                • Deeds search and verification of owner details<br>
+                                • Validation of sectional plans, PQ schedules, and budgets<br>
+                                • Insurance and maintenance assessments<br>
+                                • Review of arrear levies and credit control<br>
+                                • Compilation of a detailed report and action log to address any gaps</p>
+                            <p>A strong take-on process sets the foundation for long-term management success.</p>
 
-                                2. Comprehensive Service Offering
-                            </h5>
-                            <p>
+                            <h5>Why Choose Trafalgar for Sectional Title Management</h5>
+                            <p>• Over 50 years of experience managing <a
+                                    href="{{ route('property-management.community-scheme-management') }}"
+                                    target="_blank"><b>community schemes</b></a> across South Africa<br>
+                                • Comprehensive, end-to-end services covering financial, legal, maintenance and
+                                administrative functions<br>
+                                • Transparent communication through detailed reporting and digital access<br>
+                                • Proactive management approach, addressing issues before they escalate<br>
+                                • Fully compliant and accredited, ensuring trustees’ peace of mind</p>
 
-                                Trafalgar offers a full range of sectional title management services, covering everything
-                                from financial administration and legal compliance to maintenance and dispute resolution.
-                                This comprehensive approach ensures that all of your management needs are met in one place,
-                                simplifying the process for trustees and owners.
-                            </p>
-                            <h5>
+                            <h4>Conclusion</h4>
+                            <p>Effective sectional title management safeguards the comfort, safety and investment of every
+                                owner within a community scheme. With Trafalgar’s proven systems, professional staff and
+                                nationwide support, your property is managed with expert care, financial integrity and legal
+                                compliance every step of the way. For more information on how <a
+                                    href="{{ route('managing-agent.sectional-title-managing-agent') }}"
+                                    target="_blank"><b>Trafalgar’s sectional title management agents</b></a> can assist with
+                                your sectional title management, <a href="{{ route('contact-us') }}"
+                                    target="_blank"><b>Contact us</b></a> today.</p>
 
-                                3. Transparent Communication
-                            </h5>
-                            <p>
-
-                                We believe in fostering open and transparent communication with all stakeholders.
-                                Trafalgar’s sectional title management team ensures that trustees, owners, and residents are
-                                kept informed of all important matters, enabling informed decision-making and promoting a
-                                sense of community.
-                            </p>
-                            <h5>
-
-                                4. Proactive Management Approach
-                            </h5>
-                            <p>
-                                Our proactive <a
-                                    href="{{ route('property-management.property-management-company') }}"><b>management
-                                        approach</b></a> ensures that issues are identified and addressed before they become
-                                major problems. From preventive maintenance to early intervention in disputes, Trafalgar’s
-                                team is dedicated to ensuring the long-term success of your sectional title scheme.
-                            </p>
-                            <h5>
-                                <h4> Conclusion</h4>
-                                Sectional title management is essential for the successful operation and preservation of
-                                multi-unit properties developed as sectional title community schemes. Trafalgar’s expertise
-                                in sectional title management ensures that your property is professionally managed,
-                                financially stable, and compliant with all relevant regulations. With a comprehensive range
-                                of services and a commitment to excellence, Trafalgar is your trusted partner for all your
-                                sectional title management needs.
-
-                                For more information on how Trafalgar’s <a
-                                    href="{{ route('managing-agent.sectional-title-managing-agent') }}"><b>sectional title
-                                        management agents</b></a> can assist with
-                                your sectional title management, <a href="{{ route('contact-us') }}"><b>Contact us</b></a>
-                                today.
 
                         </div>
                     </div>

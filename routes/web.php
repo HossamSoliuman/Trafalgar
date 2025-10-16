@@ -329,7 +329,16 @@ Route::get('property-management/stsm-act', [ManageController::class, 'stsmAct'])
 Route::get('property-management/sectional-title-and-hoa-management/sectional-title-management/stsm-act', [ManageController::class, 'stsmActCopy'])->name('property-management.sectional-title-and-hoa-management.sectional-title-management.stsm-act');
 Route::get('property-management/easy-guide-to-body-corporate-resolutions', [ManageController::class, 'easyGuideToBodyCorporateResolution'])->name('property-management.easy-guide-to-body-corporate-resolutions');
 Route::get('property-management-tips', [ManageController::class, 'propertyManagementTips'])->name('property-management-tips');
-Route::get('property-management/sectional-title-and-hoa-management/sectional-title-management', [ManageController::class, 'sectionalTitleManagement'])->name('property-management.sectional-title-and-hoa-management.sectional-title-management');
+
+Route::get('/property-management/sectional-title-and-hoa-management/sectional-title-management', function () {
+    return redirect(url('/property-management/sectional-title-management'), 301);
+})->name('property-management.sectional-title-and-hoa-management.sectional-title-management');
+
+Route::redirect(
+    '/property-management/sectional-title-and-hoa-management/property-management/sectional-title-management',
+    '/property-management/sectional-title-management'
+);
+
 Route::get('property-management/sectional-title-and-hoa-management/hoa-management', [ManageController::class, 'hoaManagement'])->name('property-management.sectional-title-and-hoa-management.hoa-management');
 Route::get('property-management/sectional-title-and-hoa-management/estate-management', [ManageController::class, 'estateManagementNew'])->name('property-management.sectional-title-and-hoa-management.estate-management');
 Route::get('property-management/sectional-title-and-hoa-management/financial-management', [ManageController::class, 'financialManagement'])->name('property-management.sectional-title-and-hoa-management.financial-management');
