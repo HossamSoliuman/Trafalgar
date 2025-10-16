@@ -13,7 +13,7 @@
         <div class="container">
             <ul>
                 <li><a href="{{ route('managing-agent') }}">PROPERTY MANAGING AGENTS</a></li>
-                <li><a href="#">Sectional Title Management Agent</a></li>
+                <li><a href="#">Sectional Title Managing Agent</a></li>
             </ul>
         </div>
     </div>
@@ -23,13 +23,13 @@
     <section class="guldenland_section manage_section mt-5">
         <div class="container">
             <div class="heading h1_tag mb-4">
-                <h1>Sectional Title Management Agent</h1>
+                <h1>Sectional Title Managing Agent</h1>
                 <div class="manage-paragraph text-justify">
                     <p>
                         A sectional title scheme is a popular form of property development and ownership in which multiple
                         owners hold title to individual units while sharing ownership of the common property. This unique
                         ownership structure comes with its own set of challenges, making the role of a sectional title
-                        management agent crucial. At Trafalgar, we specialize in providing exceptional <a
+                        managing agent crucial. At Trafalgar, we specialize in providing exceptional <a
                             href="{{ route('property-management.property-management-service-provider') }}"><b>management
                                 services</b></a> that ensure the smooth operational management of sectional title
                         properties, enhancing the living experience for all residents and also growing the value of their
@@ -50,16 +50,16 @@
                                 trustees, ensuring compliance with legal requirements, facilitating communication, and
                                 maintaining property standards.</p>
                             <p>Given the complexities and time involved, many sectional title schemes benefit significantly
-                                from the expertise of a professional management agent. Trafalgar's experienced team is
+                                from the expertise of a professional managing agent. Trafalgar's experienced team is
                                 dedicated to providing comprehensive <a
                                     href="{{ route('property-management') }}"><b>management solutions </b></a> tailored to
                                 the needs of each scheme.</p>
 
-                            <h4>Key Responsibilities of a Sectional Title Management Agent</h4>
+                            <h4>Key Responsibilities of a Sectional Title Managing Agent</h4>
                             <p><b>1. Financial Management</b></p>
                             <p>One of the primary roles of a sectional title managing agent is financial management and
                                 oversight. This includes:</p>
-                            <p><b>• Budgeting:</b> The management agent works with the trustees to develop a realistic
+                            <p><b>• Budgeting:</b> The managing agent works with the trustees to develop a realistic
                                 annual budget for both the admin and reserve levy funds that accounts for all expected
                                 income and expenses, including maintenance, insurance, and utilities. The final draft
                                 budgets are presented at the AGM for approval and implementation thereafter. Levies are set
@@ -91,15 +91,15 @@
                             <p><b>• Emergency Repairs:</b> The managing agent is responsible for coordinating immediate
                                 responses to urgent maintenance issues, ensuring that repairs are carried out promptly to
                                 minimize inconvenience to residents.</p>
-                            <p>By maintaining the property in excellent condition, the sectional title management agent
+                            <p>By maintaining the property in excellent condition, the sectional title managing agent
                                 enhances the appeal of the community scheme and contributes to owner and resident
                                 satisfaction.</p>
 
                             <p><b>3. Rule Enforcement and Compliance</b></p>
-                            <p>An important function of a sectional title management agent is to assist the trustees with
+                            <p>An important function of a sectional title managing agent is to assist the trustees with
                                 the enforcement of the body corporate conduct rules. These rules are essential for
                                 maintaining order and harmony within the community. Key responsibilities include:</p>
-                            <p><b>• Communication of Rules:</b> The management agent ensures that all owners and residents
+                            <p><b>• Communication of Rules:</b> The managing agent ensures that all owners and residents
                                 are aware of the CSOS approved conduct rules, which helps foster a culture of compliance.
                             </p>
                             <p><b>• Monitoring Compliance:</b> Regular checks and communication with residents help identify
@@ -122,7 +122,7 @@
                             <p><b>• Understanding Legislation:</b> The managing agent stays informed about property laws,
                                 including those specific to sectional title schemes, to ensure compliance.</p>
                             <p><b>• Documentation Management:</b> Proper record-keeping is essential for legal compliance.
-                                The management agent maintains accurate and up-to-date records of all community meetings,
+                                The managing agent maintains accurate and up-to-date records of all community meetings,
                                 financial transactions, and correspondence.</p>
                             <p><b>• Insurance Management:</b> The managing agent ensures that appropriate insurance cover is
                                 in place for the common property, protecting the body corporate and residents from potential
@@ -180,7 +180,7 @@
                                 issues before they escalate, ensuring smooth operations within the community.</p>
 
                             <h4>Conclusion</h4>
-                            <p>The role of a sectional title management agent is essential for the effective management and
+                            <p>The role of a sectional title managing agent is essential for the effective management and
                                 success of sectional title schemes. Trafalgar’s comprehensive services encompass <a
                                     href="{{ route('property-finance') }}"><b>financial management</b></a>, property
                                 maintenance, rule enforcement, legal compliance, communication, administration and emergency
