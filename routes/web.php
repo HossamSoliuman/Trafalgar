@@ -174,6 +174,7 @@ Route::get('/admin', function () {
 
 //// admin login route group ////
 Route::group(['prefix' => 'admin',  'middleware' => 'admin'], function () {
+    Route::get('export-weekly-property-report', [WeeklyPropertyReportController::class, 'export'])->name('admin.export-weekly-property-report');
     Route::get('download-property-report', [DownloadPropertySheetController::class, 'downloadPropertyReport'])->name('admin.download-property-report');
     Route::get('property-report', [DownloadPropertySheetController::class, 'index'])->name('admin.property-report');
     Route::get('job-applications', [JobApplicationController::class, 'index'])->name('admin.job-applications');
@@ -424,7 +425,6 @@ Route::post('report-maintenance-issues-email', [PropertyManagementController::cl
 Route::post('subscriber-newsletter', [NewsLetterSubscriberController::class, 'subscriberdNewLetter'])->name('subscriber-newsletter');
 Route::get('newsletter-signup', [NewsLetterSubscriberController::class, 'index'])->name('newsletter-signup');
 
-Route::get('admin/export-weekly-property-report', [WeeklyPropertyReportController::class, 'export'])->name('admin.export-weekly-property-report');
 
 Route::get('admin/remove-sold-property', [RemoveSoldPropertyController::class, 'removeSoldProperty'])->name('admin.remove-sold-property');
 
