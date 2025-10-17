@@ -45,6 +45,7 @@ class WeekPropertyEmailReport extends Command
         \Log::info("Email cron start working");
         $controller = new WeeklyPropertyReportController();
         $controller->export();
-        \Log::info("Email sent successfully");
+        \Log::info("Email cron finished successfully");
+
     }
 }
