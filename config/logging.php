@@ -53,6 +53,12 @@ return [
             'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
+        'monthly' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/laravel-' . date('Y-m') . '.log'),
+            'days' => 365,
+            'level' => 'debug',
+        ],
 
         'single' => [
             'driver' => 'single',
