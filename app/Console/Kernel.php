@@ -23,7 +23,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('removeExpireProperty:cron')->daily();
         $schedule->command('WeekPropertyEmailReport:cron')->dailyAt('6:00');
-        $schedule->job(new SendPendingContactEmails)->cron('*/21 * * * *');
+        $schedule->job(new SendPendingContactEmails)->everyMinute();
     }
 
     /**

@@ -17,10 +17,10 @@ class SendPendingContactEmails implements ShouldQueue
 
     public function handle()
     {
-        $contacts = ContactUs::where('is_sent', false)->get();
+        $contacts = ContactUs::where('is_sent', false)->where('branches_email','info@trafalgar.co.za')->get();
 
         foreach ($contacts as $contact) {
-            Mail::to($contact->branches_email)->send(new ContactUsMailByBranch($contact));
+            Mail::to('info@trafalgar.co.za')->send(new ContactUsMailByBranch($contact));
             $contact->is_sent = true;
             $contact->save();
         }

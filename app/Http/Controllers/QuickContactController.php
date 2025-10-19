@@ -96,9 +96,7 @@ public function contactUs(Request $request)
     $contactus->comment_or_question = $request->comment_or_question;
     $contactus->branches_email = $request->branches_email ?? 'info@trafalgar.co.za';
     $contactus->save();
-
-    Mail::to(['info@trafalgar.co.za'])->send(new ContactUsMailByBranch($request->all()));
-
+    
     return Redirect::back()->with('success', 'Email sent successfully')->with('formName', 'trafalgar_contactus');
 }
 
