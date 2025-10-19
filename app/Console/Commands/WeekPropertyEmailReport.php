@@ -8,6 +8,7 @@ use Excel;
 use App\Exports\WeeklyPropertyReportExport;
 use Mail;
 use App\Mail\WeeklyExcelPropertyReport;
+use Illuminate\Support\Facades\Log;
 
 class WeekPropertyEmailReport extends Command
 {
@@ -42,10 +43,10 @@ class WeekPropertyEmailReport extends Command
      */
     public function handle()
     {
-        \Log::info("Email cron start working");
+        Log::info("Email cron start working");
         $controller = new WeeklyPropertyReportController();
         $controller->export();
-        \Log::info("Email cron finished successfully");
+        Log::info("Email cron finished successfully");
 
     }
 }

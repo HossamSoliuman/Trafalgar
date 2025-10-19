@@ -44,6 +44,20 @@ return [
             'timeout' => null,
             'auth_mode' => null,
         ],
+        'cli' => [
+            'transport' => 'smtp',
+            'host' => env('CLI_MAIL_HOST'),
+            'port' => env('CLI_MAIL_PORT', 587),
+            'encryption' => env('CLI_MAIL_ENCRYPTION', 'tls'),
+            'username' => env('CLI_MAIL_USERNAME'),
+            'password' => env('CLI_MAIL_PASSWORD'),
+            'timeout' => null,
+            'local_domain' => env('CLI_MAIL_EHLO_DOMAIN'),
+            'from' => [
+                'address' => env('CLI_MAIL_FROM_ADDRESS', 'cli-noreply@example.com'),
+                'name' => env('MAIL_FROM_NAME', 'CLI Mailer'),
+            ],
+        ],
 
         'ses' => [
             'transport' => 'ses',
