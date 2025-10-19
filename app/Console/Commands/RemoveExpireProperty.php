@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Http\Controllers\Admin\RemoveSoldPropertyController;
+use Illuminate\Support\Facades\Log;
 
 class RemoveExpireProperty extends Command
 {
@@ -12,14 +13,14 @@ class RemoveExpireProperty extends Command
      *
      * @var string
      */
-    protected $signature = 'removeExpireProperty:cron';
+    protected $signature = 'removeExpireProperty';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Remove Expire Property';
 
     /**
      * Create a new command instance.
@@ -38,8 +39,8 @@ class RemoveExpireProperty extends Command
      */
     public function handle()
     {
-         \Log::info("Cron is working fine no 2!");
-             $controller = new RemoveSoldPropertyController(); // make sure to import the controller
- $controller->removeSoldProperty();
+        Log::info("Cron is working fine no 2!");
+        $controller = new RemoveSoldPropertyController();
+        $controller->removeSoldProperty();
     }
 }
