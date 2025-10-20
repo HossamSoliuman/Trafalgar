@@ -92,9 +92,6 @@ Route::get('lost-password', [ForgotPasswordController::class, 'showLinkRequestFo
 // create route for MainController controller 
 Route::get('/', [MainController::class, 'index'])->name('/');
 Route::get('get-news', [MainController::class, 'getNewsApi'])->name('get-news-api');
-Route::get('landing', [MainController::class, 'landing'])->name('landing');
-Route::get('/profile', [MainController::class, 'profile'])->name('/profile');
-Route::get('favourite-property', [MainController::class, 'favouriteProperty'])->name('favourite-property');
 
 Route::get('about-us', [MainController::class, 'aboutUs'])->name('about-us');
 Route::get('contact-us', [MainController::class, 'contactUs'])->name('contact-us');

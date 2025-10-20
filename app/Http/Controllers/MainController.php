@@ -198,14 +198,6 @@ class MainController extends Controller
         return $array;
     }
 
-
-    public function landing()
-    {
-        $setting = Setting::find(1);
-        return view('frontPart.landing', compact('setting'));
-    }
-
-
     public function aboutUs()
     {
         $setting = Setting::find(1);
@@ -252,19 +244,6 @@ class MainController extends Controller
     {
         $setting = Setting::find(1);
         return view('frontPart.contactUs', compact('setting'));
-    }
-
-    public function profile()
-    {
-        $setting = Setting::find(1);
-        return view('frontPart.profile', compact('setting'));
-    }
-
-
-    public function favouriteProperty()
-    {
-        $setting = Setting::find(1);
-        return view('frontPart.favouriteProperty', compact('setting'));
     }
 
     public function commercialreports()

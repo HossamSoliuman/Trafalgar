@@ -15,7 +15,7 @@
                         <a  href="{{ route('change-password')}}">Change Password</a>
                     </li>
                     <li >
-                        <a href="{{ route('favourite-property-list') }}">Favourite</a>
+                        <a href="{{ route('favourite-properties') }}">Favourite</a>
                     </li>
                 </ul>
             </nav>
