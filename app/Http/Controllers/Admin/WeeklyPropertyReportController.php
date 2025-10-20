@@ -44,18 +44,17 @@ class WeeklyPropertyReportController extends Controller
         Log::info("File Path: {$filePath}");
         Log::info("Time: " . now()->toDateTimeString());
 
-        $to = [
-            'AndrewS@trafalgar.co.za',
+        $toEmails = [
+            // 'AndrewS@trafalgar.co.za',
             'jeanne@memeworx.co.za',
             'umayyas@trafalgar.co.za',
-            // 'hossamsoliuman@gmail.com'
+            'hossamsoliuman@gmail.com'
         ];
         $cc = [];
 
         Log::info(str_repeat('-', 120));
         Log::info('Preparing to Send Weekly Report Email');
-        Log::info("To: " . implode(', ', $to));
-        Log::info("CC: " . implode(', ', $cc));
+        Log::info("To: " . implode(', ', $toEmails));
         Log::info("Mailer: " . config('mail.default'));
         Log::info("Mail Host: " . config('mail.mailers.' . config('mail.default') . '.host'));
         Log::info("Mail Port: " . config('mail.mailers.' . config('mail.default') . '.port'));
@@ -63,9 +62,10 @@ class WeeklyPropertyReportController extends Controller
         Log::info("Time: " . now()->toDateTimeString());
 
         try {
-            Mail::to($to)
-                ->cc($cc)
-                ->send(new WeeklyExcelPropertyReport($filePath));
+            foreach ($toEmails as $email) {
+                Mail::to($email)
+                    ->send(new WeeklyExcelPropertyReport($filePath));
+            }
 
             $failures = Mail::failures();
 
@@ -78,7 +78,7 @@ class WeeklyPropertyReportController extends Controller
             } else {
                 Log::info(str_repeat('-', 120));
                 Log::info("Email Sent Successfully (No Failures Reported)");
-                Log::info("To: " . implode(', ', $to));
+                Log::info("To: " . implode(', ', $toEmails));
                 Log::info("CC: " . implode(', ', $cc));
                 Log::info("Time: " . now()->toDateTimeString());
             }
