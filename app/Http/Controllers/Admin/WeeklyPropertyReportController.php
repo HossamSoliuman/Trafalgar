@@ -46,8 +46,8 @@ class WeeklyPropertyReportController extends Controller
 
         $toEmails = [
             'AndrewS@trafalgar.co.za',
-            // 'jeanne@memeworx.co.za',
-            // 'umayyas@trafalgar.co.za',
+            'jeanne@memeworx.co.za',
+            'umayyas@trafalgar.co.za',
             'hossamsoliuman@gmail.com'
         ];
         $cc = [];
