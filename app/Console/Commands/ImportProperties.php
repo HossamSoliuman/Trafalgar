@@ -44,45 +44,43 @@ class ImportProperties extends Command
     public function handle()
     {
         Log::info('Import properties cron started');
+        $controller = new ImportPropertyController();
+        $syncController = new SyncApiPropertyImportController();
+
+        $cities = [
+            'durban',
+            'capeTown',
+            'eastLondon',
+            'johannesBurg',
+            'portElizabeth',
+            'pretoria',
+            'innerCity'
+        ];
+
+        foreach ($cities as $city) {
+            try {
+                Log::info("Starting {$city} properties import");
+                $controller->$city();
+                Log::info("{$city} properties import completed successfully");
+            } catch (Exception $e) {
+                Log::error("Error importing properties for {$city}: " . $e->getMessage());
+                Mail::raw("Error importing properties for {$city}: " . $e->getMessage(), function ($message) use ($city) {
+                    $message->to('hossamsoliuman@gmail.com')->subject("ImportProperties Cron Failed - {$city}");
+                });
+            }
+        }
+
         try {
-            $controller = new ImportPropertyController();
-            Log::info('Starting Durban import');
-            $controller->durban();
-            Log::info('Durban import completed successfully');
-
-            Log::info('Starting Cape Town import');
-            $controller->capeTown();
-            Log::info('Cape Town import completed successfully');
-
-            Log::info('Starting East London import');
-            $controller->eastLondon();
-            Log::info('East London import completed successfully');
-
-            Log::info('Starting Inner City import');
-            $controller->innerCity();
-            Log::info('Inner City import completed successfully');
-
-            Log::info('Starting Johannesburg import');
-            $controller->johannesBurg();
-            Log::info('Johannesburg import completed successfully');
-
-            Log::info('Starting Port Elizabeth import');
-            $controller->portElizabeth();
-            Log::info('Port Elizabeth import completed successfully');
-
-            Log::info('Starting Pretoria import');
-            $controller->pretoria();
-            Log::info('Pretoria import completed successfully');
-
-            $SyncController = new SyncApiPropertyImportController();
-            $SyncController->unibaseApiData();
-
-            Log::info('Import properties cron finished successfully');
+            Log::info('Starting Unibase property API sync');
+            $syncController->unibaseApiData();
+            Log::info('Unibase property API sync completed successfully');
         } catch (Exception $e) {
-            Log::error('Import properties cron failed: ' . $e->getMessage());
-            Mail::raw('Error occurred in ImportProperties command: ' . $e->getMessage(), function ($message) {
-                $message->to('hossamsoliuman@gmail.com')->subject('ImportProperties Cron Failed');
+            Log::error('Error during Unibase property API sync: ' . $e->getMessage());
+            Mail::raw('Error during Unibase property API sync: ' . $e->getMessage(), function ($message) {
+                $message->to('hossamsoliuman@gmail.com')->subject('ImportProperties Cron Failed - Unibase Sync');
             });
         }
+
+        Log::info('Import properties cron finished');
     }
 }

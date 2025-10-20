@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ImportAgents;
+use App\Console\Commands\ImportProperties;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Jobs\SendPendingContactEmails;
@@ -12,6 +14,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\RemoveExpireProperty::class,
         Commands\WeekPropertyEmailReport::class,
+        ImportProperties::class,
+        ImportAgents::class,
     ];
     /**
      * Define the application's command schedule.
@@ -23,8 +27,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->job(new SendPendingContactEmails)->everyMinute();
         $schedule->command('WeekPropertyEmailReport:cron')->dailyAt('6:00');
-        $schedule->command('importProperties')->twiceDaily(0, 12);
-        $schedule->command('importAgents')->twiceDaily(0, 12);
+        $schedule->command('importProperties')->cron('0 1,5,13 * * *');
+        $schedule->command('importAgents')->cron('0 1,5,13 * * *');
         $schedule->command('removeExpireProperty')->dailyAt('1:00');
     }
 
