@@ -45,9 +45,9 @@ class WeeklyPropertyReportController extends Controller
         Log::info("Time: " . now()->toDateTimeString());
 
         $toEmails = [
-            // 'AndrewS@trafalgar.co.za',
-            'jeanne@memeworx.co.za',
-            'umayyas@trafalgar.co.za',
+            'AndrewS@trafalgar.co.za',
+            // 'jeanne@memeworx.co.za',
+            // 'umayyas@trafalgar.co.za',
             'hossamsoliuman@gmail.com'
         ];
         $cc = [];
