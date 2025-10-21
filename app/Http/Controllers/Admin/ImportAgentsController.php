@@ -16,60 +16,49 @@ class ImportAgentsController extends Controller
 
         return view('admin.pages.importAgents');
     }
-    // DURBAN
+
     public function durban()
     {
-
-        $apiKey = 'heJ2Hmr5Ax692JkGVtf1oU2bAuRqHK9NDspia25sCyNYWHRjy+BD3AxQhpggFB/O';
+        $apiKey = config('branch.tokens.durban');
         $this->importDataFunction($apiKey, 'durban');
-        return redirect('/admin/importagents')->with('success', 'Property import successfully');
+        return redirect('/admin/importproperty')->with('success', 'Property import successfully');
     }
 
-    // PRETORIA
-    public function pretoria()
-    {
-
-        $apiKey = 'dwvFM9KwKjZChmcrPDhpIvMi8/O4dFoeghs/Xmrob5h8Q99GT6q+qaCrAONJ7uIc';
-        $this->importDataFunction($apiKey, 'pretoria');
-        return redirect('/admin/importagents')->with('success', 'Property import successfully');
-    }
-
-    //CAPE TOWN
     public function capeTown()
     {
-
-        $apiKey = 'pdab3oCUefEgYMWcwEbwGaO3YOwyMsCFLHv+J9wRLWEar7Vb+K/AwKoCbJf6vuIF';
+        $apiKey = config('branch.tokens.capetown');
         $this->importDataFunction($apiKey, 'capeTown');
-        return redirect('/admin/importagents')->with('success', 'Property import successfully');
+        return redirect('/admin/importproperty')->with('success', 'Property import successfully');
     }
 
-    //JOHANNESBURG
-    public function johannesBurg()
-    {
-
-        $apiKey = 'iJqzkct/9+S333CWawiPzquO43KX2PNfdceo5Y10Y5W9Z/h+WReevEFIujLvrkJ7';
-        $this->importDataFunction($apiKey, 'johannesBurg');
-        return redirect('/admin/importagents')->with('success', 'Property import successfully');
-    }
-
-    // PORT ELIZABETH
-    public function portElizabeth()
-    {
-
-        $apiKey = 'oVfwb/YN/rO9Hhj99grZhpzC/5A2yEH0O4GyN+o7gJO01ME5yvJgkJB7UhgI5SWc';
-        $this->importDataFunction($apiKey, 'portElizabeth');
-        return redirect('/admin/importagents')->with('success', 'Property import successfully');
-    }
-
-
-    // East London
     public function eastLondon()
     {
-
-        $apiKey = 'CGkkJkU172ympsbxOYuGGY3OdaHo6CEEXDjESH6ON39gT6l0BQ+GYmFS6Ng58mYf';
+        $apiKey = config('branch.tokens.eastlondon');
         $this->importDataFunction($apiKey, 'eastLondon');
-        return redirect('/admin/importagents')->with('success', 'Property import successfully');
+        return redirect('/admin/importproperty')->with('success', 'Property import successfully');
     }
+
+    public function johannesBurg()
+    {
+        $apiKey = config('branch.tokens.johannesburg');
+        $this->importDataFunction($apiKey, 'johannesBurg');
+        return redirect('/admin/importproperty')->with('success', 'Property import successfully');
+    }
+
+    public function portElizabeth()
+    {
+        $apiKey = config('branch.tokens.portelizabeth');
+        $this->importDataFunction($apiKey, 'portElizabeth');
+        return redirect('/admin/importproperty')->with('success', 'Property import successfully');
+    }
+
+    public function pretoria()
+    {
+        $apiKey = config('branch.tokens.pretoria');
+        $this->importDataFunction($apiKey, 'pretoria');
+        return redirect('/admin/importproperty')->with('success', 'Property import successfully');
+    }
+
 
 
 
