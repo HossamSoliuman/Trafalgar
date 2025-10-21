@@ -71,17 +71,6 @@ class ImportPropertyController extends Controller
     return redirect('/admin/importproperty')->with('success', 'Property import successfully');
   }
 
-
-
-  // inner city
-  public function innerCity()
-  {
-
-    $apiKey = 'ZJGmaqJ5/sCxZAStUcou3nFELh9R14WPu15UYd/DYUgzxB93MoLwtd2SdQ8i4s2W';
-    $this->importDataFunction($apiKey, 'innerCity');
-    //  $this->newPropertyAlertToUser();
-    return redirect('/admin/importproperty')->with('success', 'Property import successfully');
-  }
   // east London
   public function eastLondon()
   {
@@ -90,9 +79,6 @@ class ImportPropertyController extends Controller
     //  $this->newPropertyAlertToUser();
     return redirect('/admin/importproperty')->with('success', 'Property import successfully');
   }
-
-
-
 
   public function importDataFunction($apiKey, $api_city_key_name)
   {

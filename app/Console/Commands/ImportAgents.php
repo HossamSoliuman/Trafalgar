@@ -54,7 +54,6 @@ class ImportAgents extends Command
             'capeTown',
             'johannesBurg',
             'portElizabeth',
-            'innerCity',
             'eastLondon'
         ];
 

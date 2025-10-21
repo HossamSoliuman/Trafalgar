@@ -53,8 +53,7 @@ class ImportProperties extends Command
             'eastLondon',
             'johannesBurg',
             'portElizabeth',
-            'pretoria',
-            'innerCity'
+            'pretoria'
         ];
 
         foreach ($cities as $city) {

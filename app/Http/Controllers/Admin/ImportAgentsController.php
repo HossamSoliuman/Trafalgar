@@ -62,15 +62,6 @@ class ImportAgentsController extends Controller
     }
 
 
-    // inner City
-    public function innerCity()
-    {
-
-        $apiKey = 'ZJGmaqJ5/sCxZAStUcou3nFELh9R14WPu15UYd/DYUgzxB93MoLwtd2SdQ8i4s2W';
-        $this->importDataFunction($apiKey, 'innerCity');
-        return redirect('/admin/importagents')->with('success', 'Property import successfully');
-    }
-
     // East London
     public function eastLondon()
     {
@@ -103,7 +94,7 @@ class ImportAgentsController extends Controller
         $responseBody = json_decode($response->getBody(), true);
 
 
-        
+
         if (count($responseBody) > 0) {
             Agent::where('api_city_key', $api_city_key_name)->delete();
         }
