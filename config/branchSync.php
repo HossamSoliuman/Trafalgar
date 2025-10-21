@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'unibase' => [
+    'unibaseAgentApiData' => [
         'username' => env('BRANCH_UNIBASE_USERNAME'),
         'password' => env('BRANCH_UNIBASE_PASSWORD'),
     ],

@@ -1,6 +1,6 @@
 <?php
 
-return [
+return [ 
     'tokens' => [
         'durban' => env('BRANCH_TOKEN_DURBAN'),
         'capetown' => env('BRANCH_TOKEN_CAPETOWN'),

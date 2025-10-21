@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\EntegralApiData;
 use App\Models\SearchReference;
-use Redirect;
+use Illuminate\Support\Facades\Redirect;
 
 class SyncApiPropertyImportController extends Controller
 {
@@ -16,77 +16,80 @@ class SyncApiPropertyImportController extends Controller
         return view('admin.pages.importSyncApiData');
     }
 
+
     public function unibaseApiData()
     {
-        $userName = config('branches.unibase_sandbox.username');
-        $password = config('branches.unibase_sandbox.password');
-        $token = 'Basic ' . base64_encode($userName . ':' . $password);
-        $this->importSyncPropertyData($token, $userName);
+        $username = config('branchSync.unibase.username');
+        $password = config('branchSync.unibase.password');
+        $token = 'Basic ' . base64_encode($username . ':' . $password);
+        $this->importSyncPropertyData($token, $username);
         return Redirect::back()->with('success', 'Sync api unibase Property import successfully');
     }
 
     public function portElizabeth()
     {
-        $userName = config('branches.port_elizabeth.username');
-        $password = config('branches.port_elizabeth.password');
-        $token = 'Basic ' . base64_encode($userName . ':' . $password);
-        $this->importSyncPropertyData($token, $userName);
+        $username = config('branchSync.portElizabeth.username');
+        $password = config('branchSync.portElizabeth.password');
+        $token = 'Basic ' . base64_encode($username . ':' . $password);
+        $this->importSyncPropertyData($token, $username);
         return Redirect::back()->with('success', 'Sync api Property import successfully');
     }
 
     public function pretoria()
     {
-        $userName = config('branches.pretoria.username');
-        $password = config('branches.pretoria.password');
-        $token = 'Basic ' . base64_encode($userName . ':' . $password);
-        $this->importSyncPropertyData($token, $userName);
+        $username = config('branchSync.pretoria.username');
+        $password = config('branchSync.pretoria.password');
+        $token = 'Basic ' . base64_encode($username . ':' . $password);
+        $this->importSyncPropertyData($token, $username);
         return Redirect::back()->with('success', 'Sync api Property import successfully');
     }
 
     public function capeTown()
     {
-        $userName = config('branches.cape_town.username');
-        $password = config('branches.cape_town.password');
-        $token = 'Basic ' . base64_encode($userName . ':' . $password);
-        $this->importSyncPropertyData($token, $userName);
+        $username = config('branchSync.capeTown.username');
+        $password = config('branchSync.capeTown.password');
+        $token = 'Basic ' . base64_encode($username . ':' . $password);
+        $this->importSyncPropertyData($token, $username);
         return Redirect::back()->with('success', 'Sync api Property import successfully');
     }
 
     public function johannesBurg()
     {
-        $userName = config('branches.johannesburg.username');
-        $password = config('branches.johannesburg.password');
-        $token = 'Basic ' . base64_encode($userName . ':' . $password);
-        $this->importSyncPropertyData($token, $userName);
+        $username = config('branchSync.johannesBurg.username');
+        $password = config('branchSync.johannesBurg.password');
+        $token = 'Basic ' . base64_encode($username . ':' . $password);
+        $this->importSyncPropertyData($token, $username);
         return Redirect::back()->with('success', 'Sync api Property import successfully');
     }
 
     public function eastLondon()
     {
-        $userName = config('branches.east_london.username');
-        $password = config('branches.east_london.password');
-        $token = 'Basic ' . base64_encode($userName . ':' . $password);
-        $this->importSyncPropertyData($token, $userName);
+        $username = config('branchSync.eastLondon.username');
+        $password = config('branchSync.eastLondon.password');
+        $token = 'Basic ' . base64_encode($username . ':' . $password);
+        $this->importSyncPropertyData($token, $username);
         return Redirect::back()->with('success', 'Sync api Property import successfully');
     }
 
     public function trafalgarPropertyMangement()
     {
-        $userName = config('branches.trafalgar_property_mangement.username');
-        $password = config('branches.trafalgar_property_mangement.password');
-        $token = 'Basic ' . base64_encode($userName . ':' . $password);
-        $this->importSyncPropertyData($token, $userName);
+        $username = config('branchSync.trafalgar.username');
+        $password = config('branchSync.trafalgar.password');
+        $token = 'Basic ' . base64_encode($username . ':' . $password);
+        $this->importSyncPropertyData($token, $username);
         return Redirect::back()->with('success', 'Sync api Property import successfully');
     }
 
     public function trafalgarPropertyMangementPvtLtd()
     {
-        $userName = config('branches.trafalgar_property_mangement_pvt.username');
-        $password = config('branches.trafalgar_property_mangement_pvt.password');
-        $token = 'Basic ' . base64_encode($userName . ':' . $password);
-        $this->importSyncPropertyData($token, $userName);
+        $username = config('branchSync.trafalgar_pvt_pretoria.username');
+        $password = config('branchSync.trafalgar_pvt_pretoria.password');
+        $token = 'Basic ' . base64_encode($username . ':' . $password);
+        $this->importSyncPropertyData($token, $username);
         return Redirect::back()->with('success', 'Sync api Property import successfully');
     }
+
+
 
     public function importSyncPropertyData($token, $apiUserName)
     {

@@ -16,12 +16,17 @@ class SyncApiImportAgentsController extends Controller
 
   public function importBranch($branch)
   {
-    $username = config("branches.{$branch}.username");
-    $password = config("branches.{$branch}.password");
+    $username = config("branchSync.{$branch}.username");
+    $password = config("branchSync.{$branch}.password");
     $token = 'Basic ' . base64_encode($username . ':' . $password);
 
     $this->importDataFunction($token, $username);
     return Redirect::back()->with('success', $username . ' Agents import successfully');
+  }
+
+  public function unibaseAgentApiData()
+  {
+    return $this->importBranch('unibaseAgentApiData');
   }
 
   public function durban()
